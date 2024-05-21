@@ -1,0 +1,12 @@
+{
+    "name": "jonkellys/transformers-under-control",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonkellys",
+            "email": "jonke2331@gmail.com"
+        }
+    ],
+    "require": {}
+}
