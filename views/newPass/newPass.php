@@ -21,7 +21,7 @@
   $page = "newPass";
 
   if(!isset($_GET['token'])) {
-    header('Location: http://localhost/sistema-transformadores/login');
+    header('Location: http://localhost/transformers-under-control/login');
   }
 ?>
 
@@ -34,7 +34,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include "./modulos/links.php"; ?>
-  <title>Crear Nueva Contraseña | <?php echo NOMBRE; ?></title>
+  <title>Create new password | <?php echo NOMBRE; ?></title>
 </head>
 
 <body class="d-flex flex-column align-items-start bg-body" style="width: 100vw;">
@@ -64,7 +64,7 @@
 
   <div class="d-flex mt-2 flex-row justify-content-between mb-0 ms-3">
     <a class="btn btn-outline-primaty py-2 text-primary ml-4 nav-icon" href="recover">
-      <i class="bx bx-arrow-back text-primary"></i> Volver
+      <i class="bx bx-arrow-back text-primary"></i> Return
     </a>
   </div>
 
@@ -74,21 +74,21 @@
   ?>
 
   <div class="card mb-4 main-box d-flex flex-column align-items-center p-3 mx-auto mt-5">
-    <h3 class="mb-3 text-primary">Crear Nueva Contraseña</h3>
+    <h3 class="mb-3 text-primary">Create new password</h3>
     <form action="<?php echo SERVERURL; ?>conexiones/recovery.php?newPass" id="newPass-form" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="save" class="FormularioAjax p-3 col-10">
       <input type="hidden" name="token" id="token" value="<?php echo $token; ?>">
       <div class="form-group col-12">
-        <label for="newPassForm" class="form-label">Contraseña Nueva</label>
-        <input type="password" name="newPassForm" id="newPassForm" class="form-control input-default " placeholder="Contraseña Nueva" />
+        <label for="newPassForm" class="form-label">New Password</label>
+        <input type="password" name="newPassForm" id="newPassForm" class="form-control input-default " placeholder="New Password" />
       </div>
       <div class="form-group col-12 mt-3">
-        <label for="confirmPassForm" class="form-label">Confirmar Contraseña</label>
-        <input type="password" name="confirmPassForm" id="confirmPassForm" class="form-control input-default " placeholder="Confirmar Contraseña" />
+        <label for="confirmPassForm" class="form-label">Confirm Password</label>
+        <input type="password" name="confirmPassForm" id="confirmPassForm" class="form-control input-default " placeholder="Confirm Password" />
       </div>
 
       <div id="respuesta" class="RespuestaAjax mt-3"></div>
       <div class="d-flex flex-column align-items-center justify-content-center">
-        <button class="btn btn-primary mx-auto" value="submit" name="submit" id="btn" type="submit">Ingresar</button>
+        <button class="btn btn-primary mx-auto" value="submit" name="submit" id="btn" type="submit">Send</button>
       </div>
 
     </form>

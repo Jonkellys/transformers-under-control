@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
         new swal({
-            title: "Espere un momento...",
+            title: "Wait a moment...",
             icon: "question",
             iconHtml: '<div class="spinner-grow text-primary" role="status"><span class="sr-only"></span></div>',
             showConfirmButton: false,

@@ -22,6 +22,6 @@
 </style>
 
 <header class="card rounded-0 w-100 mb-0 p-2 d-flex flex-row justify-content-between">
-  <img class="my-auto logo-img" src="<?php echo media; ?>img/name.png" alt="" />
-  <a class="btn btn-outline-info my-auto mr-5 btn-help" href="ayuda<?php echo "#" . $page; ?>">Ayuda</a>
+  <img class="my-auto logo-img" src="<?php echo media; ?>img/logo.png" alt="" />
+  <h4><?php echo NOMBRE; ?></h4>
 </header>

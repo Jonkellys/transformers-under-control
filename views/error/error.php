@@ -32,7 +32,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-6 card text-center pt-3 align-items-center">
                               <h2 class="mb-2 mx-2">Error <strong class="text-primary">404</strong> </h2>
-        <p class="mb-2 mx-2">Oops! 😖 La Dirección de Url No Fue Encontrada.</p>
+        <p class="mb-2 mx-2">Oops! 😖 The URL address wasn't found.</p>
                                 <img
                                   src="<?php echo media; ?>img/404-error.png"
                                   alt="page-misc-error-light"

@@ -1,10 +1,5 @@
 <?php
 
-    // $servername = "localhost";
-    // $dbname = "sistema-corpoelec";
-    // $username = "root";
-    // $password = "";
-
     function connect() {
         $servername = "localhost";
         $dbname = "sistema-corpoelec";
@@ -142,10 +137,10 @@
     }
 
     function munChoose($name) {
-        if($name == "Central de Servicios") {
+        if($name == "Service Central") {
             return $name;
-        } if($name == "Andrés Mata" || $name == 'Arismendi' || $name == 'Benítez' || $name == 'Bermúdez' || $name == 'Cajigal' || $name == 'Libertador' || $name == 'Mariño' || $name == 'Valdez') {
-          return "Municipio " . $name;
+        } else {
+          return "Municipality " . $name;
         }
     }
 
@@ -153,9 +148,9 @@
         $total = 0;
 
         if($mun == false) {
-            $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Estado = 'Instalado' ");
+            $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Estado = 'Installed' ");
         } else {
-            $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Municipio = '$mun' AND T_Estado = 'Instalado'");
+            $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Municipio = '$mun' AND T_Estado = 'Installed'");
         }
 
         while ($rows = $query->fetch()) {
@@ -169,9 +164,9 @@
       $total = 0;
 
       if($loc == false) {
-        $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Municipio = '$mun' AND T_Parroquia = '$par' AND T_Estado = 'Instalado'");
+        $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Municipio = '$mun' AND T_Parroquia = '$par' AND T_Estado = 'Installed'");
       } else {
-        $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Municipio = '$mun' AND T_Parroquia = '$par' AND T_Localidad = '$loc' AND T_Estado = 'Instalado'");
+        $query = connect()->query("SELECT T_Capacidad FROM transformadores WHERE T_Municipio = '$mun' AND T_Parroquia = '$par' AND T_Localidad = '$loc' AND T_Estado = 'Installed'");
       }
 
 

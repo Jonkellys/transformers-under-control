@@ -20,7 +20,7 @@
     session_regenerate_id(true);
 
     session_destroy();
-    header('Location: http://transformadores-corpoelec.infinityfreeapp.com/login');
+    header('Location: http://localhost/transformers-under-control/login');
   }
 ?>
 
@@ -32,7 +32,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include "./modulos/links.php"; ?>
-  <title>Historial | <?php echo NOMBRE; ?></title>
+  <title>History | <?php echo NOMBRE; ?></title>
 </head>
 
 <body style="width: 100vw;">
@@ -42,7 +42,7 @@
   ?>
 
   <div class="container-fluid mt-0 flex-grow-1 container-p-y ml-5 w-50">
-    <h4 class="fw-bold mb-0 w-50">Historial</h4>
+    <h4 class="fw-bold mb-0 w-50">History</h4>
   </div>
 
   <style media="screen">
@@ -82,50 +82,50 @@
   <div class="container-fluid p-4">
 
     <div class="d-flex flex-row justify-content-space add-btn">
-      <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Añadir Operación</button>
+      <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Add Operation</button>
     </div>
 
     <div id="accordion-one" class="accordion">
       <div id="collapseOne" class="collapse card mt-3 col-9 rounded mx-auto" data-parent="#accordion-one">
         <div class="card-body">
-          <h4 class="card-title">Añadir datos de la operación</h4>
+          <h4 class="card-title">Add Operation Info</h4>
           <form action="<?php echo SERVERURL; ?>conexiones/historial.php?HAdd" name="HAdd" id="HAdd" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="save" class="FormularioAjax p-3">
             <div class="form-group">
-              <label for="HProcAdd" class="text-dark">Procedimiento</label>
+              <label for="HProcAdd" class="text-dark">Process</label>
               <select id="HProcAdd" class="form-control input-default" name="HProcAdd">
-                <option disabled selected="selected">Seleccione el procedimiento realizado</option>
-                <option value="Reparación">Reparación</option>
-                <option value="Instalación">Instalación</option>
-                <option value="Retiro">Retiro</option>
+                <option disabled selected="selected">Select the process</option>
+                <option value="Repair">Repair</option>
+                <option value="Installation">Installation</option>
+                <option value="Removal">Removal</option>
               </select>
             </div>
 
             <input type="hidden" name="HAddInput">
 
             <div class="form-group">
-              <label for="HFechaAdd" class="text-dark">Fecha</label>
-              <p>Indique en que fecha se realizó el procedimiento</p>
+              <label for="HFechaAdd" class="text-dark">Date</label>
+              <p>Indicate the date of the operation</p>
               <input id="HFechaAdd" type="date" class="form-control input-default" name="HFechaAdd">
             </div>
 
             <div class="form-group">
-              <label for="HEquipoAdd" class="text-dark">Número Serial</label>
-              <input id="HEquipoAdd" onkeypress="return letras(event)" type="text" class="form-control input-default" name="HEquipoAdd" placeholder="Ingrese el número serial del transformador">
+              <label for="HEquipoAdd" class="text-dark">Serial Number</label>
+              <input id="HEquipoAdd" onkeypress="return letras(event)" type="text" class="form-control input-default" name="HEquipoAdd" placeholder="Enter transformer's serial number">
             </div>
 
             <div class="">
-              <label class="text-dark">Ubicación</label>
-              <p>Indique la ubicación del transformador donde se realizó el procedimiento</p>
+              <label class="text-dark">Location</label>
+              <p>Indicate the location where the operation was done</p>
               
               <div class="d-flex flex-row flex-start flex-wrap">
-                <p>Usar dirección de "Central de Servicios"</p>
+                <p>Use address of "Service Central"</p>
                 <label class="radio-inline mr-3 ml-4"><input type="checkbox" name="TCentralDir" value="Si"> Sí</label>
               </div>
               <div class="d-flex flex-row flex-start flex-wrap">
                 <div class="form-group">
-                  <label for="HMunicipioAdd" class="text-dark">Municipio</label>
+                  <label for="HMunicipioAdd" class="text-dark">Municipality</label>
                   <select id="HMunicipioAdd" class="form-control input-default" name="HMunicipioAdd">
-                    <option disabled selected="selected">Seleccione una opción</option>
+                    <option disabled selected="selected">Choose an option</option>
                     <?php
 
                       $sqlMun = "SELECT * FROM municipios WHERE M_Tipo = 'Municipio' AND M_Nombre != 'Central de Servicios'";
@@ -143,12 +143,12 @@
               </div>
 
             <div class="form-group">
-              <label for="HDireccionAdd" class="text-dark">Dirección</label>
+              <label for="HDireccionAdd" class="text-dark">Address</label>
               <textarea id="HDireccionAdd" class="form-control input-default h-150px" name="HDireccionAdd" rows="6" id="comment"></textarea>
             </div>
 
             <div class="RespuestaAjax mt-3"></div>
-            <button type="submit" class="btn btn-primary">Añadir datos</button>
+            <button type="submit" class="btn btn-primary">Add Info</button>
           </form>
         </div>
       </div>
@@ -159,24 +159,24 @@
     <div class="col-11 mx-auto mt-4 card">
       <div class="card-body">
         <div class="card-title">
-          <h4>Historial de Operaciones</h4>
+          <h4>Operations History</h4>
         </div>
         <div class="table-responsive">
           <table class="table table-striped table-hover" id="table">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Procedimiento</th>
-                <th>Fecha</th>
-                <th>Serial del Transformador</th>
-                <th>Estado</th>
-                <th>Municipio</th>
-                <th>Parroquia</th>
-                <th>Localidad</th>
-                <th>Dirección</th>
+                <th>Process</th>
+                <th>Date</th>
+                <th>Transformer's Serial Number</th>
+                <th>Status</th>
+                <th>Municipality</th>
+                <th>Parish</th>
+                <th>Location</th>
+                <th>Address</th>
                 <?php
-                  if($_SESSION['tipo'] == "Administrador") {
-                    echo '<th>Acciones</th>';
+                  if($_SESSION['tipo'] == "Admin") {
+                    echo '<th>Actions</th>';
                   }
                 ?>
               </tr>
@@ -200,7 +200,7 @@
                         <td>" . $rows['O_Direccion'] . "</td>
                         ";
 
-                        if($_SESSION['tipo'] == "Administrador") {
+                        if($_SESSION['tipo'] == "Admin") {
                         echo "<td class='mt-0 d-flex flex-row justify-content-around'>
                           <a class='btn btn-sm btn-info' href='editar?operacion=" . $rows['O_Codigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>

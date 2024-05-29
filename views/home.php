@@ -77,10 +77,10 @@
       <img class="rounded-left home-img" src="<?php echo media; ?>img/image-home.png" alt="Bienvenido">
       <div class="d-flex flex-row justify-content-center align-items-center w-100 my-5">
         <div class="d-flex flex-column align-items-center justify-content-center mt-3">
-          <h2 class="mb-3 text-dark">Bienvenido!</h2>
+          <h2 class="mb-3 text-dark">Welcome!</h2>
           <a href="login"  class="btn btn-primary btn-lg mb-2">
             <i class="menu-icon tf-icons bx bx-log-in text-white"></i>
-            Iniciar Sesión
+            Log in
           </a>
         </div>
       </div>

@@ -10,7 +10,7 @@
     $claveLogin = password_verify($passwordLogin, $passwordHash);
 
     if($usuarioLogin == "" || $passwordLogin == "") {
-      echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+      echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
       exit(); 
     }
 
@@ -22,8 +22,8 @@
         
       if($row['userUsername'] == $usuarioLogin && password_verify($passwordLogin, $row['userPassword'])) {
           echo "<script>new swal({
-                  title: '¡Éxito!',
-                  text: 'Iniciando Sesión...',
+                  title: '¡Success!',
+                  text: 'Loging in...',
                   icon: 'success',
                   showConfirmButton: false
                 })</script>";
@@ -43,15 +43,15 @@
           $_SESSION['token'] = md5(uniqid(mt_rand(), true));
           $_SESSION["acceso"]= time(); 
 
-          echo '<script> window.location.href = "http://localhost/sistema-transformadores/dashboard"; </script>';
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/dashboard"; </script>';
         
       } else {
-          echo "<script>new swal('¡Error!', 'La contraseña es incorrecta', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'The password is incorrect', 'error');</script>";
           exit();
       }
         
   } else {
-      echo "<script>new swal('¡Error!', 'El usuario no existe', 'error');</script>";
+      echo "<script>new swal('¡Error!', 'The user doesn't exists', 'error');</script>";
     exit();
   }
                     

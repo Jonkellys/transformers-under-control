@@ -6,13 +6,13 @@ $(document).ready(function(){
       [10, 25, 50, "All"]
   ],
     language: {
-      search: "Buscar",
+      search: "Search",
       searchPlaceholder: "",
-      info: "Mostrando página _PAGE_ de _PAGES_",
-      emptyTable: "No hay registros",
-      infoEmpty: "No hay registros",
-      infoFiltered: " - Resultado filtrado de _MAX_ registros",
-      zeroRecords: "No se encontraron coincidencias <br> (Pruebe con otro termino de búsqueda)",
+      info: "Showing page _PAGE_ of _PAGES_",
+      emptyTable: "No records found",
+      infoEmpty: "No records found",
+      infoFiltered: " - Result filtered of _MAX_ records",
+      zeroRecords: "No matches found <br> (Try with other word)",
       lengthMenu: "",
       paginate: {
         first: "<i class='bx bx-chevrons-left bx-sm align-middle'></i>",
@@ -30,13 +30,13 @@ $(document).ready(function(){
       [10, 25, 50, "All"]
   ],
     language: {
-      search: "Buscar",
+      search: "Search",
       searchPlaceholder: "",
-      info: "Mostrando página _PAGE_ de _PAGES_",
-      emptyTable: "No hay registros",
-      infoEmpty: "No hay registros",
-      infoFiltered: " - Resultado filtrado de _MAX_ registros",
-      zeroRecords: "No se encontraron coincidencias <br> (Pruebe con otro termino de búsqueda)",
+      info: "Showing page _PAGE_ of _PAGES_",
+      emptyTable: "No records found",
+      infoEmpty: "No records found",
+      infoFiltered: " - Result filtered of _MAX_ records",
+      zeroRecords: "No matches found <br> (Try with other word)",
       lengthMenu: "",
       paginate: {
         first: "<i class='bx bx-chevrons-left bx-sm align-middle'></i>",

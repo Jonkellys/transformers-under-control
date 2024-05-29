@@ -37,28 +37,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $centralDir = strClean($_POST["TCentralDir"]);
 
       if($codigo == "" || $estado == "" || $capacidad == "" || $banco == "" || $tipo == "" || $marca == "" || $modelo == "" || $garantia == "") {
-        echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
         exit();
       }
 
       if($centralDir == "") {
         if($centralDir == "" && $municipio == "") {
-          echo "<script>new swal('¡Error!', 'Debes colocar una ubicación', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must add a Municipality', 'error');</script>";
           exit();
         }
 
         if($municipio != "" && $parroquia == "") {
-          echo "<script>new swal('¡Error!', 'Debes colocar una parroquia', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must add a Parish', 'error');</script>";
           exit();
         }
 
         if($parroquia != "" && $localidad == "") {
-          echo "<script>new swal('¡Error!', 'Debes colocar una localidad', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must add a Location', 'error');</script>";
           exit();
         }
 
         if($localidad != "" && $direccion == "") {
-          echo "<script>new swal('¡Error!', 'Debes colocar una dirección', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must add an Address', 'error');</script>";
           exit();
         }
 
@@ -66,28 +66,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $direccion = "Calle La Planta";
         $parroquia = "Santa Catalina";
         $localidad = "Sector El Valle";
-        $municipio = "Central de Servicios";
+        $municipio = "Service Central";
       }
 
-      if($estado == "Almacenado" && $municipio != "Central de Servicios") {
-        echo "<script>new swal('¡Error!', 'Los transformadores `Almacenados` solo pueden regitrarse en `Central de Servicios`', 'error');</script>";
+      if($estado == "Stock" && $municipio != "Service Central") {
+        echo "<script>new swal('¡Error!', 'The transformers `In Stock` can only be saved in `Service Central`', 'error');</script>";
         exit();
       }
 
       $consulta = ejecutar_consulta_simple("SELECT T_Codigo FROM transformadores WHERE T_Codigo = '$codigo'");
 
       if($consulta->rowCount()>=1) {
-        echo "<script>new swal('¡Error!', 'El número serial ingresado ya está registrado en el sistema', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'The entered serial number is already in the system', 'error');</script>";
         exit();
       }
 
       if($stmt->execute()){
-        echo "<script>new swal('¡Éxito!', 'Transformador registrado correctamente', 'success');</script>";
+        echo "<script>new swal('¡Success!', 'Transformer Added Correctly', 'success');</script>";
         echo '<script> location.reload(); </script>';
-      } else{
-        echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
       }
-
 
     } else if(isset($_GET['updateT'])) {
 
@@ -120,40 +117,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $garantia = strClean($_POST["TGarantiaUpdate"]);
 
       if($estado == "" || $capacidad == "" || $municipio == "" || $direccion == "" || $tipo == "" || $banco == "" || $parroquia == "" || $localidad == "" || $marca == "" || $modelo == "" || $garantia == "") {
-        echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
         exit();
       }
 
       if($centralDir == "" && $municipio == "") {
-        echo "<script>new swal('¡Error!', 'Debes colocar una ubicación', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must add a Municipality', 'error');</script>";
         exit();
       }
 
       if($municipio != "" && $parroquia == "") {
-        echo "<script>new swal('¡Error!', 'Debes colocar una parroquia', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must add a Parish', 'error');</script>";
         exit();
       }
 
       if($parroquia != "" && $localidad == "") {
-        echo "<script>new swal('¡Error!', 'Debes colocar una localidad', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must add a Location', 'error');</script>";
         exit();
       }
 
       if($localidad != "" && $direccion == "") {
-        echo "<script>new swal('¡Error!', 'Debes colocar una dirección', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must add an Address', 'error');</script>";
         exit();
       }
 
-      if($estado == "Almacenado" && $municipio != "Central de Servicios") {
-        echo "<script>new swal('¡Error!', 'Los transformadores `Almacenados` solo pueden regitrarse en `Central de Servicios`', 'error');</script>";
+      if($estado == "Stock" && $municipio != "Service Central") {
+        echo "<script>new swal('¡Error!', 'The transformers `In Stock` can only be saved in `Service Central`', 'error');</script>";
         exit();
       }
 
       if($sql->execute()){
-        echo "<script>new swal('¡Éxito!', 'Datos editados correctamente', 'success');</script>";
-        echo '<script> window.location.href = "http://localhost/sistema-transformadores/inventario"; </script>';
-      } else {
-        echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
+        echo "<script>new swal('¡Success!', 'Info Updated Correctly', 'success');</script>";
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/inventario"; </script>';
       }
 
     } else if(isset($_GET['deleteT'])) {
@@ -162,10 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $query = "DELETE FROM transformadores WHERE T_Codigo = '$codigo'";
 
       if(connect()->query($query)) {
-        echo "<script>new swal('¡Éxito!', 'Transformador eliminado correctamente', 'success');</script>";
-        echo '<script> window.location.href = "http://localhost/sistema-transformadores/inventario"; </script>';
-      } else {
-        echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
+        echo "<script>new swal('Success', 'Transformer Deleted Correctly', 'success');</script>";
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/inventario"; </script>';
       }
     }
 

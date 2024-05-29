@@ -30,47 +30,45 @@
 
 
                 if($usuario == "" || $clave == "" || $confirmar == "" || $nombre == "" || $apellido == "" || $cargo == "" || $correo == "") { 
-                    echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
                     exit(); 
                 }
 
                 if(strlen($clave) < 8){
-                    echo "<script>new swal('¡Error!', 'La contraseña debe tener mínimo 8 carácteres', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The password has to have at least 8 characters', 'error');</script>";
                     exit();
                 }
                 
                 if($clave != $confirmar){
-                    echo "<script>new swal('¡Error!', 'Las contraseñas no coinciden', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The passwords don't match', 'error');</script>";
                     exit();
                 }  
 
                 $consulta = ejecutar_consulta_simple("SELECT userEmail FROM usuarios WHERE userEmail = '$correo'");
                     if($consulta->rowCount()>=1) {
-                    echo "<script>new swal('¡Error!', 'El correo ingresado ya está registrado en el sistema', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The entered email is already in the system', 'error');</script>";
                         exit();
                     }
 
                 $consulta2 = ejecutar_consulta_simple("SELECT userUsername FROM usuarios WHERE userUsername = '$usuario'");
                     if($consulta2->rowCount()>=1) {
-                    echo "<script>new swal('¡Error!', 'El usuario ingresado ya está registrado en el sistema', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The entered username is already in the system', 'error');</script>";
                         exit();
                     }
                 
                 $consulta4= ejecutar_consulta_simple("SELECT id FROM usuarios");
                 $numero = ($consulta4->rowCount())+1;
 
-                if ($tipo == "Administrador") {
+                if ($tipo == "Admin") {
                     $codigo = generar_codigo_aleatorio("A", 7, $numero);
                 } else {
                     $codigo = generar_codigo_aleatorio("N", 7, $numero);
                 }
 
                 if($stmt->execute()){
-                    echo "<script>new swal('Cuenta Creada Correctamente', 'Puede ingresar al sistema con los datos ingresados', 'success');</script>";
+                    echo "<script>new swal('Account Created Correctly', 'You can log in with the new user', 'success');</script>";
                     echo '<script> location.reload(); </script>';
-                } else{
-                    echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
-                }
+                } 
 
             } else if(isset($_GET['updateC'])) {
                 $sql = connect()->prepare("UPDATE usuarios SET userCodigo = :codigo, userUsername = :username, userPassword = :contrasena, userType = :tipo, userName = :nombre, userLastname = :apellido, userCargo = :cargo, userEmail = :email WHERE userCodigo = :codigo");
@@ -96,28 +94,26 @@
                 $username2 = strClean($_POST["userCheck"]);
 
                 if($username == "" || $tipo == "" || $nombre == "" || $apellido == "" || $cargo == "" || $email == "") {
-                    echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
                     exit(); 
                 }
 
                 $consulta3 = ejecutar_consulta_simple("SELECT userEmail FROM usuarios WHERE userEmail = '$email' AND userEmail != '$email2'");
                 if($consulta3->rowCount()>=1) {
-                    echo "<script>new swal('¡Error!', 'El correo ingresado ya está registrado en el sistema', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The entered email is already in the system', 'error');</script>";
                     exit();
                 }
 
                 $consulta4 = ejecutar_consulta_simple("SELECT userUsername FROM usuarios WHERE userUsername = '$username' AND userUsername != '$username2'");
                 if($consulta4->rowCount()>=1) {
-                    echo "<script>new swal('¡Error!', 'El usuario ingresado ya está registrado en el sistema', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The entered username is already in the system', 'error');</script>";
                     exit();
                 }
 
                 if($sql->execute()){
-                    echo "<script>new swal('¡Éxito!', 'Cuenta editada correctamente', 'success');</script>";
+                    echo "<script>new swal('¡Success!', 'Account Updated correctly', 'success');</script>";
                                       
-                    echo '<script> window.location.href = "http://localhost/sistema-transformadores/configuraciones"; </script>';
-                } else{
-                    echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
+                    echo '<script> window.location.href = "http://localhost/transformers-under-control/configuraciones"; </script>';
                 }
 
             } else if(isset($_GET['deleteC'])) {
@@ -125,20 +121,20 @@
           
                 $query = "DELETE FROM usuarios WHERE userCodigo = '$codigo'";
                 
-                $check = ejecutar_consulta_simple("SELECT * FROM usuarios WHERE userType = 'Administrador' AND userCodigo != '$codigo'");
+                $check = ejecutar_consulta_simple("SELECT * FROM usuarios WHERE userType = 'Admin' AND userCodigo != '$codigo'");
                 
           
                 if($check->rowCount() < 1) {
-                    echo "<script>new swal('¡No se puede eliminar el usuario!', 'Debe existir mínimo un usuario Adminstrador en el sistema', 'error');</script>";
+                    echo "<script>new swal('¡Can't delete the user!', 'There has to be at least one Admin in the system', 'error');</script>";
                     exit();
                 } else {
                     connect()->query($query);
-                    echo "<script>new swal('¡Éxito!', 'Cuenta eliminada correctamente', 'success');</script>";
+                    echo "<script>new swal('¡Success!', 'Account Deleted Correctly', 'success');</script>";
                     
                     if($_SESSION['codigo'] == $codigo) {
-                      echo '<script> window.location.href = "http://localhost/sistema-transformadores/"; </script>';
+                      echo '<script> window.location.href = "http://localhost/transformers-under-control/"; </script>';
                     } else {
-                      echo '<script> window.location.href = "http://localhost/sistema-transformadores/configuraciones"; </script>';
+                      echo '<script> window.location.href = "http://localhost/transformers-under-control/configuraciones"; </script>';
                     }
                 }
               }

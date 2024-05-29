@@ -7,11 +7,11 @@
         $radMun = strClean($_POST['radMun']);
 
         if($radMun == "") {
-          echo "<script>new swal('¡Error!', 'Debes seleccionar una opción', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must choose an option', 'error');</script>";
           exit();
         }
 
-        echo '<script> window.location.href = "http://localhost/sistema-transformadores/ubicaciones?municipio=' . $radMun .'"; </script>';
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/ubicaciones?municipio=' . $radMun .'"; </script>';
 
       } else if(isset($_GET['UAdd'])) {
         $stmt = connect()->prepare("INSERT INTO municipios(M_Codigo, M_Nombre, M_Tipo, M_Ubicacion)
@@ -25,17 +25,17 @@
         $nombre = strClean($_POST["LAdd"]);
         $ubicacion = strClean($_POST["HParroquiaAdd"]);
         $municipio = strClean($_POST["LMunicipioAdd"]);
-        $tipo = "Localidad";
+        $tipo = "Location";
 
         if($nombre == "" || $ubicacion == "" || $municipio == "") {
-          echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
           exit();
         }
 
 	$consultaNombre = ejecutar_consulta_simple("SELECT * FROM municipios WHERE M_Ubicacion = '$ubicacion' AND M_Nombre = '$nombre'");
 	
 	if($consultaNombre->rowCount() >= 1) {
-	  echo "<script>new swal('¡Error!', 'La localidad " . $nombre . " ya existe en la Parroquia " . $ubicacion . "', 'error');</script>";
+	  echo "<script>new swal('¡Error!', 'The Location " . $nombre . " already exists in the Parish " . $ubicacion . "', 'error');</script>";
 	  exit();
 	}
         
@@ -45,19 +45,17 @@
         $codigo = generar_codigo_aleatorio("L", 7, $numero);
 
         if($stmt->execute()){
-          echo "<script>new swal('¡Éxito!', 'Localidad Creada Correctamente', 'success');</script>";
+          echo "<script>new swal('¡Success!', 'Location Created Correctly', 'success');</script>";
           echo '<script> location.reload(); </script>';
-        } else{
-          echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
-        }
+        } 
 
       } else if(isset($_GET['getMun'])) {
         $mun = $_GET['getMun'];
-        if($mun != "Central de Servicios") {
+        if($mun != "Service Central") {
         echo '<div class="form-group">
-                    <label for="HParroquiaAdd" class="text-dark">Parroquia</label>
+                    <label for="HParroquiaAdd" class="text-dark">Parish</label>
                     <select id="HParroquiaAdd" class="form-control input-default" name="HParroquiaAdd">
-                    <option disabled selected="selected">Seleccione una opción</option>
+                    <option disabled selected="selected">Choose an option</option>
                     ';
                       $sql = "SELECT * FROM municipios WHERE M_Tipo = 'Parroquia' AND M_Ubicacion = '$mun'";
                       $result = connect()->query($sql);
@@ -74,9 +72,9 @@
         $par = strClean($_GET['getParroquia']);
 
         echo '<div class="form-group">
-          <label for="LocalidadFind" class="text-dark mr-2">Localidad</label>
+          <label for="LocalidadFind" class="text-dark mr-2">Location</label>
           <select id="LocalidadFind" class="form-control input-default" name="LocalidadFind">
-            <option value="Todas" selected="selected">Todas</option>
+            <option value="All" selected="selected">All</option>
             ';
               $sql3 = "SELECT * FROM municipios WHERE M_Tipo = 'Localidad' AND M_Ubicacion = '$par'";
               $result3 = connect()->query($sql3);
@@ -93,37 +91,37 @@
         $parroquia = $_GET['parroquia'];
         $localidad = $_GET['localidad'];
 
-        if($parroquia == "Todas" && $localidad == "Todas") {
+        if($parroquia == "All" && $localidad == "All") {
           echo '<script> location.reload(); </script>';
-        } else if($parroquia != "Todas" && $localidad == "Todas") {
+        } else if($parroquia != "All" && $localidad == "All") {
           echo'
             <div id="resultsList" class="d-flex flex-wrap add-list">
 
-              <h4 class="mx-auto w-100 text-center mt-5 justify-content-around"><strong>Parroquia: </strong>' . $parroquia . ' <br><br><strong>Localidad: </strong>' . $localidad . '</h4>
+              <h4 class="mx-auto w-100 text-center mt-5 justify-content-around"><strong>Parish: </strong>' . $parroquia . ' <br><br><strong>Location: </strong>' . $localidad . '</h4>
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Instalados</h5>
-                  <span class="badge badge-success badge-pill font-tiny text-white">' . getTData('Instalado', $municipio, $parroquia, false) . '</span>
+                  <h5 class="card-title text-center">Installed Transformers</h5>
+                  <span class="badge badge-success badge-pill font-tiny text-white">' . getTData('Installed', $municipio, $parroquia, false) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Dañados</h5>
-                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getTData('Dañado', $municipio, $parroquia, false) . '</span>
+                  <h5 class="card-title text-center">Damaged Transformers</h5>
+                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getTData('Damaged', $municipio, $parroquia, false) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Totales</h5>
+                  <h5 class="card-title text-center">Total Transformers</h5>
                   <span class="badge badge-primary badge-pill font-tiny text-white">' . getTData(false, $municipio, $parroquia, false) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Capacidad Instalada</h5>
+                  <h5 class="card-title text-center">Installed Capacity</h5>
                   <span class="badge badge-warning badge-pill font-tiny text-white">' . getParLocCapacidad($municipio, $parroquia, false) . '</span>
                 </div>
               </div>
@@ -134,13 +132,13 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Serial</th>
-                    <th>Estado</th>
-                    <th>Capacidad</th>
-                    <th>Localidad</th>
-                    <th>Dirección</th>
-                    <th>Tipo</th>
-                    <th>Banco Transformador</th>
+                    <th>Serial Number</th>
+                    <th>State</th>
+                    <th>Capacity</th>
+                    <th>Location</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Transformer Bank</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -167,35 +165,35 @@
               </table>
             </div>
           </div>';
-        }  else if($parroquia != "Todas" && $localidad != "Todas") {
+        }  else if($parroquia != "All" && $localidad != "All") {
           echo'
             <div id="resultsList" class="d-flex flex-wrap add-list">
 
-              <h4 class="mx-auto w-100 text-center mt-5 justify-content-around"><strong>Parroquia: </strong>' . $parroquia . ' <strong>Localidad: </strong>' . $localidad . '</h4>
+              <h4 class="mx-auto w-100 text-center mt-5 justify-content-around"><strong>Parish: </strong>' . $parroquia . ' <strong>Location: </strong>' . $localidad . '</h4>
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Instalados</h5>
-                  <span class="badge badge-success badge-pill font-tiny text-white">' . getTData('Instalado', $municipio, $parroquia, $localidad) . '</span>
+                  <h5 class="card-title text-center">Installed Transformers</h5>
+                  <span class="badge badge-success badge-pill font-tiny text-white">' . getTData('Installed', $municipio, $parroquia, $localidad) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Dañados</h5>
-                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getTData('Dañado', $municipio, $parroquia, $localidad) . '</span>
+                  <h5 class="card-title text-center">Damaged Transformers</h5>
+                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getTData('Damaged', $municipio, $parroquia, $localidad) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Totales</h5>
+                  <h5 class="card-title text-center">Total Transformers</h5>
                   <span class="badge badge-primary badge-pill font-tiny text-white">' . getTData(false, $municipio, $parroquia, $localidad) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Capacidad Instalada</h5>
+                  <h5 class="card-title text-center">Installed Capacity</h5>
                   <span class="badge badge-warning badge-pill font-tiny text-white">' . getParLocCapacidad($municipio, $parroquia, $localidad) . '</span>
                 </div>
               </div>
@@ -206,12 +204,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Serial</th>
-                    <th>Estado</th>
-                    <th>Capacidad</th>
-                    <th>Dirección</th>
-                    <th>Tipo</th>
-                    <th>Banco Transformador</th>
+                    <th>Serial Number</th>
+                    <th>State</th>
+                    <th>Capacity</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Transformer Bank</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -254,22 +252,20 @@
         $municipio = strClean($_POST["HMunicipioAdd"]);
 
         if($nombre == "" || $ubicacion == "" || $municipio == "") {
-          echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
           exit();
         }
         
         $consultaNombre = ejecutar_consulta_simple("SELECT * FROM municipios WHERE M_Ubicacion = '$ubicacion' AND M_Nombre = '$nombre' AND M_Codigo != '$codigo'");
 	
 	if($consultaNombre->rowCount() >= 1) {
-	  echo "<script>new swal('¡Error!', 'La localidad " . $nombre . " ya existe en la Parroquia " . $ubicacion . "', 'error');</script>";
+	  echo "<script>new swal('¡Error!', 'The Location " . $nombre . " already exists in the Parish " . $ubicacion . "', 'error');</script>";
 	  exit();
 	}
 
         if($sqlEdit->execute()){
-          echo "<script>new swal('¡Éxito!', 'Ubicación editada correctamente', 'success');</script>";
-          echo '<script> window.location.href = "http://localhost/sistema-transformadores/ubicaciones"; </script>';
-        } else{
-          echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
+          echo "<script>new swal('¡Success!', 'Location Updated Correctly', 'success');</script>";
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/ubicaciones"; </script>';
         }
 
       } else if(isset($_GET['UDel'])) {
@@ -278,10 +274,8 @@
         $queryDel = "DELETE FROM municipios WHERE M_Codigo = '$codigo'";
 
         if(connect()->query($queryDel)) {
-          echo "<script>new swal('¡Éxito!', 'Ubicación eliminada correctamente', 'success');</script>";
-          echo '<script> window.location.href = "http://localhost/sistema-transformadores/ubicaciones"; </script>';
-        } else {
-          echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
+          echo "<script>new swal('¡Success!', 'Location Deleted Correctly', 'success');</script>";
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/ubicaciones"; </script>';
         }
 
       }
@@ -290,9 +284,9 @@
        if(isset($_GET['getPar'])) {
         $par = $_GET['getPar'];
         echo '<div class="form-group">
-                    <label for="HLocalidadAdd" class="text-dark">Localidad</label>
+                    <label for="HLocalidadAdd" class="text-dark">Location</label>
                     <select id="HLocalidadAdd" class="form-control input-default" name="HLocalidadAdd">
-                    <option disabled selected="selected">Seleccione una opción</option>
+                    <option disabled selected="selected">Choose an option</option>
                     ';
                       $sql = "SELECT * FROM municipios WHERE M_Tipo = 'Localidad' AND M_Ubicacion = '$par'";
                       $result = connect()->query($sql);

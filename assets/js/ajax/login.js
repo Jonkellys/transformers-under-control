@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
         new swal({
-            title: "Comprobando...",
+            title: "Verifying...",
             icon: "question",
             iconHtml: '<div class="spinner-grow text-primary" role="status"><span class="sr-only"></span></div>',
             showConfirmButton: false,

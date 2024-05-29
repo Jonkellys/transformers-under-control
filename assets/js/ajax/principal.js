@@ -16,24 +16,24 @@ $(document).ready(function(){
 
         var textoAlerta;
         if(tipo === "save") {
-            textoAlerta = "Los datos se almacenarán en el sistema";
+            textoAlerta = "This data will be saved in the system";
         } else if(tipo === "delete") {
-            textoAlerta = "Los datos se eliminarán del sistema";
+            textoAlerta = "This data will be eliminated from the system";
         } else if(tipo === "update") {
-            textoAlerta = "Los datos se actualizarán";
-        } else if(tipo === "report") {
-            textoAlerta = "El reporte será generado";
+            textoAlerta = "This data will be updated";
+        } else if(tipo === "register") {
+            textoAlerta = "The report will be generated";
         } else {
-            textoAlerta = "¿Quieres realizar la operación?";
+            textoAlerta = "Do you want to continue this operation?";
         }
 
         new swal({
-            title: "¿Estás seguro?",
+            title: "Are you sure?",
             text: textoAlerta,
             icon: "question",
             showCancelButton: true,
-            confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar"
+            confirmButtonText: "Accept",
+            cancelButtonText: "Cancel"
         }).then((result) => {
             if(result.isConfirmed) {
                 $.ajax({

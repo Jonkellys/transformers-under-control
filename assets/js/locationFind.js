@@ -11,7 +11,7 @@ $(document).ready(function(){
         var msjError = "<script>new swal('Ocurrió un error inesperado', 'Por favor actualice la página', 'error');</script>";
 
         $.ajax({
-          url: "http://localhost/sistema-transformadores/conexiones/ubicaciones.php?getParroquia=" + valor,
+          url: "http://localhost/transformers-under-control/conexiones/ubicaciones.php?getParroquia=" + valor,
           type: 'GET',
           data: $(this).val(),
           dataType: 'html',
@@ -42,7 +42,7 @@ $(document).ready(function(){
         var msjError = "<script>new swal('Ocurrió un error inesperado', 'Por favor actualice la página', 'error');</script>";
 
                 $.ajax({
-                    url: 'http://localhost/sistema-transformadores/conexiones/ubicaciones.php?municipio=' + mun + '&parroquia=' + par + '&localidad=' + loc,
+                    url: 'http://localhost/transformers-under-control/conexiones/ubicaciones.php?municipio=' + mun + '&parroquia=' + par + '&localidad=' + loc,
                     type: 'GET',
                     data: $(this).val(),
                     dataType: 'html',
@@ -51,7 +51,6 @@ $(document).ready(function(){
                     success: function(data) {
                       resultado.replaceChildren();
                       resultado.innerHTML = data;
-                        // console.log(valeur);
                     },
                     error: function(error) {
                         console.log("Error: " + error);

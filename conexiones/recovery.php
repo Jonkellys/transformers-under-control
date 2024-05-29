@@ -6,12 +6,12 @@
         $email = strClean($_POST['recoverForm']);
 
         if($email == "") {
-            echo "<script>new swal('¡Error!', 'Debes colocar tu correo', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must add your email', 'error');</script>";
             exit(); 
         } else {
             $consulta = ejecutar_consulta_simple("SELECT userEmail FROM usuarios WHERE userEmail = '$email'");
             if($consulta->rowCount() != 1) {
-                echo "<script>new swal('¡Error!', 'El correo ingresado no está registrado en el sistema', 'error');</script>";
+                echo "<script>new swal('¡Error!', 'The entered email is not saved in the system', 'error');</script>";
                 exit();
             }
         }
@@ -29,12 +29,10 @@
         $sql = connect()->prepare("INSERT INTO contrasenas(contrasenaEmail, contrasenaToken, userCodigo, userType) VALUES ('$email', '$token', '$codigo', '$tipo')");
 
         if($sql->execute()){
-            echo "<script>new swal('¡Éxito!', 'Espere un momento', 'success');</script>";
-            echo '<script> window.location.href = "http://localhost/sistema-transformadores/newPass?token=' . $token .'"; </script>';
+            echo "<script>new swal('¡Success!', 'Wait a moment', 'success');</script>";
+            echo '<script> window.location.href = "http://localhost/transformers-under-control/newPass?token=' . $token .'"; </script>';
                 
-        } else {
-            echo "<script>new swal('¡Error!', 'Hubo un error, intente de nuevo', 'error');</script>";
-        }
+        } 
     } else if(isset($_GET['newPass'])) {
         $token = strClean($_POST['token']);
 
@@ -43,17 +41,17 @@
         $password = password_hash($pass, PASSWORD_DEFAULT);
 
         if($pass == "" || $newpass == "") {
-            echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
             exit(); 
         }
 
         if(strlen($pass) < 8){
-            echo "<script>new swal('¡Error!', 'La contraseña debe tener mínimo 8 carácteres', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'The password has to have at least 8 characters', 'error');</script>";
             exit();
         }
         
         if($pass != $newpass){
-            echo "<script>new swal('¡Error!', 'Las contraseñas no coinciden', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'The passwords don't match', 'error');</script>";
             exit();
         }  
 
@@ -69,10 +67,8 @@
         $sql = connect()->prepare("UPDATE usuarios SET userPassword = '$password'  WHERE userCodigo = '$codigo'");
 
         if($sql->execute()){
-            echo "<script>new swal('Éxito!', 'Contraseña actualizada correctamente', 'success');</script>";
-            echo '<script> window.location.href = "http://localhost/sistema-transformadores/login"; </script>';
-        } else{
-            echo "<script>new swal('¡Error!', 'Hubo un error intente de nuevo', 'error');</script>";
+            echo "<script>new swal('¡Success!', 'Password Updated Correctly', 'success');</script>";
+            echo '<script> window.location.href = "http://localhost/transformers-under-control/login"; </script>';
         }
     }
 ?>

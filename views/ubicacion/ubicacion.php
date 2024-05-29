@@ -20,7 +20,7 @@
     session_regenerate_id(true);
 
     session_destroy();
-    header('Location: http://localhost/sistema-transformadores/login');
+    header('Location: http://localhost/transformers-under-control/login');
   }
 ?>
 
@@ -99,58 +99,39 @@
   </style>
 
   <div class="container-fluid mt-0 flex-grow-1 container-p-y ml-5 2-50">
-    <h4 class="fw-bold mb-0">Ubicación</h4>
+    <h4 class="fw-bold mb-0">Location</h4>
   </div>
-  
-  <?php
-  
-  function generar_codigo_aleatorio($letra, $longitud, $num) {
-  for ($i=1; $i <= $longitud ; $i++) {
-            $numero = rand(0, 9);
-            $letra .= $numero;
-        }
-
-        return $letra . "-" . $num;
-       }
-       
-       $j = 46;
-  while ($j < 100) {
-  echo generar_codigo_aleatorio("L", 7, $j);
-  }
-  ?>
 
   <div class="container-fluid p-4">
-
-
 
     <?php
 
     if(isset($mun)) {
-      if($mun == "Central de Servicios") {
+      if($mun == "Service Central") {
         echo '
         <div class="col-11 mx-auto">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title mb-3">Central de Servicios</h5>
+            <h5 class="card-title mb-3">Service Central</h5>
             <div class="basic-list-group d-flex list-info">
 
              <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Dañados</h5>
-                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getMunCount('Dañado', $mun) . '</span>
+                  <h5 class="card-title text-center">Damaged Transformers</h5>
+                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getMunCount('Damaged', $mun) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores en Stock</h5>
-                  <span class="badge badge-info badge-pill font-tiny text-white">' . getMunCount('Almacenado', $mun) . '</span>
+                  <h5 class="card-title text-center">Transformers In Stock</h5>
+                  <span class="badge badge-info badge-pill font-tiny text-white">' . getMunCount('Stock', $mun) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Totales</h5>
+                  <h5 class="card-title text-center">Total Transformers</h5>
                   <span class="badge badge-primary badge-pill font-tiny text-white">' . getMunCount(false, $mun) . '</span>
                 </div>
               </div>
@@ -160,18 +141,18 @@
     echo '<div class="col-11 mx-auto">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title mb-3">Municipio ' . $mun . '</h5>
+          <h5 class="card-title mb-3">Municipality ' . $mun . '</h5>
           ';
 
           echo '
           <div class="col-9">
-            <h4>Buscar Por</h4>
+            <h4>Search By</h4>
             <div class="d-flex flex-row justify-content-around flex-wrap">
                 <div id="locateFind1">
                   <div class="form-group">
-                    <label for="ParroquiaFind" class="text-dark">Parroquia</label>
+                    <label for="ParroquiaFind" class="text-dark">Parish</label>
                     <select id="ParroquiaFind" class="form-control input-default" name="ParroquiaFind">
-                      <option value="Todas" selected="selected">Todas</option>
+                      <option value="All" selected="selected">All</option>
                       ';
                         $sql2 = "SELECT * FROM municipios WHERE M_Tipo = 'Parroquia' AND M_Ubicacion = '$mun'";
                         $result2 = connect()->query($sql2);
@@ -186,14 +167,14 @@
                 <input type="hidden" id="MunicipioFind" value="' . $mun . '"/>
                 <div id="locateFind2">
                   <div class="form-group">
-                    <label for="LocalidadFind" class="text-dark">Localidad</label>
+                    <label for="LocalidadFind" class="text-dark">Location</label>
                     <select id="LocalidadFind" class="form-control input-default" name="LocalidadFind">
-                      <option value="Todas" selected="selected">Todas <small>(Para ver más opciones seleccione una Parroquia)</small></option>
+                      <option value="All" selected="selected">All <small>(To see more options choose a Parish)</small></option>
                     </select>
                   </div>
                 </div>
               </div>
-              <button type="submit" id="findParLoc" class="btn btn-primary mx-auto">Buscar</button>
+              <button type="submit" id="findParLoc" class="btn btn-primary mx-auto">Search</button>
           </div>';
 
           echo '
@@ -204,28 +185,28 @@
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Instalados</h5>
-                  <span class="badge badge-success badge-pill font-tiny text-white">' . getMunCount('Instalado', $mun) . '</span>
+                  <h5 class="card-title text-center">Installed Transformers</h5>
+                  <span class="badge badge-success badge-pill font-tiny text-white">' . getMunCount('Installed', $mun) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Dañados</h5>
-                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getMunCount('Dañado', $mun) . '</span>
+                  <h5 class="card-title text-center">Damaged Transformers</h5>
+                  <span class="badge badge-danger badge-pill font-tiny text-white">' . getMunCount('Damaged', $mun) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Transformadores Totales</h5>
+                  <h5 class="card-title text-center">Total Transformers</h5>
                   <span class="badge badge-primary badge-pill font-tiny text-white">' . getMunCount(false, $mun) . '</span>
                 </div>
               </div>
 
               <div class="col-2 p-0 m-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h5 class="card-title text-center">Capacidad Instalada</h5>
+                  <h5 class="card-title text-center">Installed Capacity</h5>
                   <span class="badge badge-warning badge-pill font-tiny text-white">' . getMunCapacidad($mun) . '</span>
                 </div>
               </div>
@@ -237,14 +218,14 @@ echo '
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Serial</th>
-                    <th>Estado</th>
-                    <th>Capacidad</th>
-                    <th>Parroquia</th>
-                    <th>Localidad</th>
-                    <th>Dirección</th>
-                    <th>Tipo</th>
-                    <th>Banco Transformador</th>
+                    <th>SerialNumber</th>
+                    <th>State</th>
+                    <th>Capacity</th>
+                    <th>Parish</th>
+                    <th>Location</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Transformer Bank</th>
                   </tr>
                 </thead>
                 <tbody>

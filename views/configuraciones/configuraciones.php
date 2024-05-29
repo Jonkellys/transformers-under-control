@@ -22,7 +22,7 @@
     session_regenerate_id(true);
 
     session_destroy();
-    header('Location: http://localhost/sistema-transformadores/login');
+    header('Location: http://localhost/transformers-under-control/login');
   }
 
 ?>
@@ -35,7 +35,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include "./modulos/links.php"; ?>
-  <title>Configuraciones | <?php echo NOMBRE; ?></title>
+  <title>Configurations | <?php echo NOMBRE; ?></title>
 </head>
 
 <body style="width: 100vw;">
@@ -73,7 +73,7 @@
   </style>
 
   <div class="container-fluid mt-0 flex-grow-1 container-p-y ml-5 2-50">
-    <h4 class="fw-bold mb-0">Configuraciones</h4>
+    <h4 class="fw-bold mb-0">Configurations</h4>
   </div>
   
   <?php
@@ -86,36 +86,36 @@
   <div class="container-fluid p-4">
     <div class="card col-10 mx-auto p-4">
       <div>
-        <h4>Perfil</h4>
+        <h4>Profile</h4>
         <div class="ml-4 mt-3 d-flex perfil-list">
           <div class="form-group perfil-item">
-            <label class="text-dark">Nombre</label>
+            <label class="text-dark">Name</label>
             <input readonly="" type="text" class="form-control input-default" placeholder="<?php echo $data->userName; ?>" >
           </div>
           <div class="form-group perfil-item">
-            <label class="text-dark">Apellido</label>
+            <label class="text-dark">Last name</label>
             <input readonly="" type="text" class="form-control input-default" placeholder="<?php echo $data->userLastname; ?>" >
           </div>
           <div class="form-group perfil-item">
-            <label class="text-dark">Correo</label>
+            <label class="text-dark">Email</label>
             <input readonly="" type="text" class="form-control input-default" placeholder="<?php echo $data->userEmail; ?>" >
           </div>
           <div class="form-group perfil-item">
-            <label class="text-dark">Cargo</label>
+            <label class="text-dark">Position</label>
             <input readonly="" type="text" class="form-control input-default" placeholder="<?php echo $data->userCargo; ?>" >
           </div>
           <div class="form-group perfil-item">
-            <label class="text-dark">Nombre de Usuario</label>
+            <label class="text-dark">Username</label>
             <input readonly="" type="text" class="form-control input-default" placeholder="<?php echo $data->userUsername; ?>" >
           </div>
           <div class="form-group perfil-item">
-            <label class="text-dark">Tipo de Usuario</label>
+            <label class="text-dark">User Type</label>
             <input readonly="" type="text" class="form-control input-default" placeholder="<?php echo $data->userType; ?>" >
           </div>
           <?php
             if($_SESSION['tipo'] == "Normal") {
               echo '
-                <a class="text-primary" href="editar?cuenta=' . $_SESSION['codigo'] . '">Editar Datos</a>
+                <a class="text-primary" href="editar?cuenta=' . $_SESSION['codigo'] . '">Update Information</a>
               ';
             }
           ?>
@@ -123,12 +123,12 @@
       </div>
     </div>
     <?php
-        if($_SESSION['tipo'] == "Administrador") {
+        if($_SESSION['tipo'] == "Admin") {
         echo '
 
     <div class="card col-10 mx-auto p-4">
       <div class="">
-        <h4>Cuentas</h4>
+        <h4>Accounts</h4>
         <div id="accordion-one" class="accordion">
           <div class="d-flex flex-row justify-content-space my-4">
             <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Añadir Cuenta</button>
@@ -136,46 +136,46 @@
 
           <div id="collapseOne" class="collapse mt-3 col-11 mx-auto" data-parent="#accordion-one">
             <div class="card-body m-0">
-            <h4 class="mb-4 text-primary text-center">Datos Personales</h4>
+            <h4 class="mb-4 text-primary text-center">Personal Info</h4>
               <form action="' . SERVERURL . 'conexiones/create.php?CAdd" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="save" class="FormularioAjax">
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="nombreAdd" class="form-label">Nombre</label>
-                    <input type="text" autocapitalize="" name="nombre" onkeypress="return letras(event)" id="nombreAdd" class="form-control input-default " placeholder="Ingresar Nombre" />
+                    <label for="nombreAdd" class="form-label">Name</label>
+                    <input type="text" autocapitalize="" name="nombre" onkeypress="return letras(event)" id="nombreAdd" class="form-control input-default " placeholder="Enter Name" />
                   </div>
 
                   <div class="form-group col-md-6">
-                    <label for="apellidoAdd" class="form-label">Apellido</label>
-                    <input type="text" autocapitalize="" name="apellido" onkeypress="return letras(event)" id="apellidoAdd" class="form-control input-default" placeholder="Ingresar Apellido" />
+                    <label for="apellidoAdd" class="form-label">Last name</label>
+                    <input type="text" autocapitalize="" name="apellido" onkeypress="return letras(event)" id="apellidoAdd" class="form-control input-default" placeholder="Enter Last name" />
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="cargoAdd" class="form-label">Nombre de Cargo</label>
-                    <input type="text" name="cargo" id="cargoAdd" onkeypress="return letras(event)" class="form-control input-default" placeholder="Ingresar Cargo" />
+                    <label for="cargoAdd" class="form-label">Position</label>
+                    <input type="text" name="cargo" id="cargoAdd" onkeypress="return letras(event)" class="form-control input-default" placeholder="Enter Position" />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="correoAdd" class="form-label">Correo Eléctronico</label>
-                    <input type="text" name="correo" id="correoAdd" class="form-control input-default" placeholder="Ingresar Correo" />
+                    <label for="correoAdd" class="form-label">Email</label>
+                    <input type="text" name="correo" id="correoAdd" class="form-control input-default" placeholder="Enter Email" />
                   </div>
                 </div>
 
                 <br>
                 <br>
 
-                <h4 class="mb-4 text-primary text-center">Datos de la Cuenta</h4>
+                <h4 class="mb-4 text-primary text-center">Account Info</h4>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="usuarioAdd" class="form-label">Nombre de Usuario</label>
-                    <input type="text" name="usuario" id="usuarioAdd" class="form-control input-default" placeholder="Ingresar Nombre de Usuario" />
+                    <label for="usuarioAdd" class="form-label">Username</label>
+                    <input type="text" name="usuario" id="usuarioAdd" class="form-control input-default" placeholder="Enter Username" />
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="tipoAdd" class="form-label">Tipo de Usuario</label>
+                    <label for="tipoAdd" class="form-label">User Type</label>
                     <select name="tipo" id="tipoAdd" class="form-control input-default" >
-                      <option disabled selected >Selecciona una opción</option>
+                      <option disabled selected >Choose an option</option>
                       <option value="Normal">Normal</option>
-                      <option value="Administrador">Administrador</option>
+                      <option value="Admin">Admin</option>
                     </select>
                   </div>
 
@@ -183,19 +183,19 @@
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="clave1Add" class="form-label">Contraseña</label>
-                    <input type="password" name="clave"  id="clave1Add" class="form-control input-default" placeholder="Ingresar Contraseña" />
+                    <label for="clave1Add" class="form-label">Password</label>
+                    <input type="password" name="clave"  id="clave1Add" class="form-control input-default" placeholder="Enter Password" />
                   </div>
 
                   <div class="form-group col-md-6">
-                    <label for="clave2Add" class="form-label">Repetir Contraseña</label>
-                    <input type="password" name="confirmar"  id="clave2Add" class="form-control input-default" placeholder="Ingresar Contraseña Nuevamente" />
+                    <label for="clave2Add" class="form-label">Repeat Password</label>
+                    <input type="password" name="confirmar"  id="clave2Add" class="form-control input-default" placeholder="Enter Password Again" />
                   </div>
                 </div>
                 <br>
                 <div id="respuesta" class="RespuestaAjax mt-3"></div>
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                  <button class="btn btn-primary mx-auto" value="submit" name="submit" id="btn" type="submit">Crear Cuenta</button>
+                  <button class="btn btn-primary mx-auto" value="submit" name="submit" id="btn" type="submit">Create Account</button>
                 </div>
 
               </form>
@@ -208,13 +208,13 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
-                <th>Cargo</th>
-                <th>Nombre de Usuario</th>
-                <th>Tipo de Usuario</th>
-                <th>Acciones</th>
+                <th>Name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Username</th>
+                <th>User Type</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>';

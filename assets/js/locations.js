@@ -12,7 +12,7 @@ $(document).ready(function(){
                      
 
                 $.ajax({
-                    url: "http://localhost/sistema-transformadores/conexiones/ubicaciones.php?getMun=" + valor,
+                    url: "http://localhost/transformers-under-control/conexiones/ubicaciones.php?getMun=" + valor,
                     type: 'GET',
                     data: $(this).val(),
                     dataType: 'html',
@@ -20,11 +20,9 @@ $(document).ready(function(){
                     contentType: false,
                     success: function(data) {
                         respuesta.innerHTML = data;
-                        // console.log(valor);
                     },
                     error: function(error) {
                         respuesta.html("Error: " + error);
-                        // console.log("Error: " + error);
                     }
                 });
         
@@ -42,7 +40,7 @@ $(document).ready(function(){
         var msjError = "<script>new swal('Ocurrió un error inesperado', 'Por favor actualice la página', 'error');</script>";
 
                 $.ajax({
-                    url: 'http://localhost/sistema-transformadores/conexiones/ubicaciones.php?getPar=' + valeur,
+                    url: 'http://localhost/transformers-under-control/conexiones/ubicaciones.php?getPar=' + valeur,
                     type: 'GET',
                     data: $(this).val(),
                     dataType: 'html',
@@ -50,11 +48,9 @@ $(document).ready(function(){
                     contentType: false,
                     success: function(data) {
                         repond.innerHTML = data;
-                        // console.log(valeur);
                     },
                     error: function(error) {
                         respuesta.html('Error: ' + error);
-                        // console.log("Error: " + error);
                     }
                 });
         

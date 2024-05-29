@@ -34,140 +34,140 @@
         $HParroquiaAdd = strClean($_POST['HParroquiaAdd']);
         $HLocalidadAdd = strClean($_POST['HLocalidadAdd']);
 
-        if($informe == "transformadores") {
+        if($informe == "transformers") {
 
           if($EstadoCheck == "" && $CapacidadCheck == "" && $MarcaCheck == "" && $ModeloCheck == "" && $AnosCheck == "" && $TipoCheck == "" && $BancoCheck == "" && $UbicacionCheck == "") {
-            echo "<script>new swal('¡Error!', 'Debes seleccionar una opción', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose an option', 'error');</script>";
             exit();
           }
 
           if($EstadoCheck == "") {
-            $EstadoInput = "Ninguno";
+            $EstadoInput = "None";
           }
 
           if($CapacidadCheck == "") {
-            $CapacidadInput = "Ninguno";
+            $CapacidadInput = "None";
           }
 
           if($MarcaCheck == "") {
-            $MarcaInput = "Ninguno";
+            $MarcaInput = "None";
           }
 
           if($ModeloCheck == "") {
-            $ModeloInput = "Ninguno";
+            $ModeloInput = "None";
           }
 
           if($AnosCheck == "") {
-            $AnosInput = "Ninguno";
+            $AnosInput = "None";
           }
 
           if($TipoCheck == "") {
-            $TipoInput = "Ninguno";
+            $TipoInput = "None";
           }
 
           if($BancoCheck == "") {
-            $BancoInput = "Ninguno";
+            $BancoInput = "None";
           }
 
 
           if($MarcaInput == "") {
-            $MarcaInput == "Todos";
+            $MarcaInput == "All";
           }
 
           if($ModeloInput == "") {
-            $ModeloInput == "Todos";
+            $ModeloInput == "All";
           }
 
           if($AnosInput == "") {
-            $AnosInput == "Todos";
+            $AnosInput == "All";
           }
 
           if($HParroquiaAdd == "") {
-            $HParroquiaAdd = "Todos";
+            $HParroquiaAdd = "All";
           }
 
           if($HLocalidadAdd == "") {
-            $HLocalidadAdd = "Todos";
+            $HLocalidadAdd = "All";
           }
 
           if($HParroquiaAdd != "" && $UbicacionInput == "") {
-            echo "<script>new swal('¡Error!', 'Debes elegir un Municipio', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose a Municipality', 'error');</script>";
             exit();
           }
 
           if($HLocalidadAdd != "" && $HParroquiaAdd == "") {
-            echo "<script>new swal('¡Error!', 'Debes elegir una Parroquia', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose a Parish', 'error');</script>";
             exit();
           }
 
-          if($EstadoInput == "Todos" && $CapacidadInput == "Todos" && $MarcaInput == "Todos" && $ModeloInput == "Todos" && $AnosInput == "Todos" && $TipoInput == "Todos" && $BancoInput == "Todos" && $UbicacionInput == "Todos") {
-            $tipoData = "Todos";
+          if($EstadoInput == "All" && $CapacidadInput == "All" && $MarcaInput == "All" && $ModeloInput == "All" && $AnosInput == "All" && $TipoInput == "All" && $BancoInput == "All" && $UbicacionInput == "All") {
+            $tipoData = "All";
           } else {
-            $tipoData = "Personalizado";
+            $tipoData = "Personalized";
           }
 
-          echo '<script> window.open("http://localhost/sistema-transformadores/newReporte?informe=' . $informe . '&tipoData=' . $tipoData . '&estado=' . $EstadoInput . '&capacidad=' . $CapacidadInput . '&marca=' . $MarcaInput . '&modelo=' . $ModeloInput . '&anos=' . $AnosInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '&tipo=' . $TipoInput . '&banco=' . $BancoInput . '", "_blank"); </script>';
+          echo '<script> window.open("http://localhost/transformers-under-control/newReporte?informe=' . $informe . '&tipoData=' . $tipoData . '&estado=' . $EstadoInput . '&capacidad=' . $CapacidadInput . '&marca=' . $MarcaInput . '&modelo=' . $ModeloInput . '&anos=' . $AnosInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '&tipo=' . $TipoInput . '&banco=' . $BancoInput . '", "_blank"); </script>';
 
-        } else if($informe == "operaciones") {
+        } else if($informe == "operations") {
 
           if($ProcedimientoCheck == "" && $FechaCheck == "" && $SerialCheck == "" && $UbicacionCheck == "") {
-            echo "<script>new swal('¡Error!', 'Debes seleccionar una opción', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose an option', 'error');</script>";
             exit();
           }
 
           if($ProcedimientoCheck == "") {
-            $ProcedimientoInput = "Ninguno";
+            $ProcedimientoInput = "None";
           }
 
           if($FechaCheck == "") {
-            $fecha = "Ninguno";
+            $fecha = "None";
           }
 
           if($SerialCheck == "") {
-            $SerialInput = "Ninguno";
+            $SerialInput = "None";
           }
 
           if($SerialInput == "") {
-            $SerialInput == "Todos";
+            $SerialInput == "All";
           }
 
           if($FechaCheck != "" && $FechaInicio == "") {
-            echo "<script>new swal('¡Error!', 'Debes seleccionar una Fecha de Inicio', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose a Begin date', 'error');</script>";
             exit();
           } else if($FechaCheck != "" && $FechaFin == "") {
-            echo "<script>new swal('¡Error!', 'Debes seleccionar una Fecha de Fin', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose a End date', 'error');</script>";
             exit();
           }
 
           if($FechaCheck != "" && $fechaInicio == "" && $fechaFin == "") {
-            $fecha = "Todos";
+            $fecha = "All";
           }
 
           if($HParroquiaAdd != "" && $UbicacionInput == "") {
-            echo "<script>new swal('¡Error!', 'Debes elegir un Municipio', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose a Municipality', 'error');</script>";
             exit();
           }
 
           if($HLocalidadAdd != "" && $HParroquiaAdd == "") {
-            echo "<script>new swal('¡Error!', 'Debes elegir una Parroquia', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'You must choose a Parish', 'error');</script>";
             exit();
           }
 
           if($HParroquiaAdd == "") {
-            $HParroquiaAdd = "Todos";
+            $HParroquiaAdd = "All";
           }
 
           if($HLocalidadAdd == "") {
-            $HLocalidadAdd = "Todos";
+            $HLocalidadAdd = "All";
           }
 
-          if($ProcedimientoInput == "Todos" && $fecha == "Todos" && $SerialInput == "Todos" && $UbicacionInput == "Todos") {
-            $tipoData = "Todos";
+          if($ProcedimientoInput == "All" && $fecha == "All" && $SerialInput == "All" && $UbicacionInput == "All") {
+            $tipoData = "All";
           } else {
-            $tipoData = "Personalizado";
+            $tipoData = "Personalized";
           }
 
-          echo '<script> window.open("http://localhost/sistema-transformadores/newReporte?informe=' . $informe . '&tipoData=' . $tipoData . '&procedimiento=' . $ProcedimientoInput . '&fecha=' . $fecha . '&fechaInicio=' . $fechaInicio . '&fechaFin=' . $fechaFin . '&serial=' . $SerialInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '", "_blank"); </script>';
+          echo '<script> window.open("http://localhost/transformers-under-control/newReporte?informe=' . $informe . '&tipoData=' . $tipoData . '&procedimiento=' . $ProcedimientoInput . '&fecha=' . $fecha . '&fechaInicio=' . $fechaInicio . '&fechaFin=' . $fechaFin . '&serial=' . $SerialInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '", "_blank"); </script>';
 
         }
 

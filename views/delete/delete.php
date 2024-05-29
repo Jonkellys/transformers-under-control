@@ -18,11 +18,11 @@
     session_regenerate_id(true);
 
     session_destroy();
-    header('Location: http://localhost/sistema-transformadores/login');
+    header('Location: http://localhost/transformers-under-control/login');
   }
 
   if($_SESSION['tipo'] == "Normal") {
-    header('Location: http://localhost/sistema-transformadores/dashboard');
+    header('Location: http://localhost/transformers-under-control/dashboard');
   }
 
 ?>
@@ -35,7 +35,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include "./modulos/links.php"; ?>
-  <title>Eliminar | <?php echo NOMBRE; ?></title>
+  <title>Delete | <?php echo NOMBRE; ?></title>
 </head>
 
 <body style="width: 100vw;">
@@ -72,48 +72,48 @@
 
     <div class="d-flex flex-row justify-content-between mb-0">
       <?php
-          if(isset($_GET['transformador'])) {
-            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="inventario">';
-          } else if(isset($_GET['operacion'])) {
-            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="historial">';
-          } else if(isset($_GET['cuenta'])) {
-            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="configuraciones">';
-          } else if(isset($_GET['ubicacion'])) {
-            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="ubicaciones">';
+          if(isset($_GET['transformer'])) {
+            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="inventory">';
+          } else if(isset($_GET['operation'])) {
+            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="history">';
+          } else if(isset($_GET['account'])) {
+            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="configurations">';
+          } else if(isset($_GET['location'])) {
+            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="locations">';
           }
         ?>
-        <i class="bx bx-arrow-back text-primary"></i> Volver
+        <i class="bx bx-arrow-back text-primary"></i> Return
       </a>
     </div>
 
   <div class="container-fluid mt-0 flex-grow-1 container-p-y mt-3">
-    <h4 class="fw-bold mb-0">Eliminar <?php if(isset($_GET['transformador'])) {echo "Transformador";} else if(isset($_GET['operacion'])) {echo "Operación";} else if(isset($_GET['cuenta'])) {echo "Cuenta";} else if(isset($_GET['ubicacion'])) {echo "Ubicación";} ?></h4>
+    <h4 class="fw-bold mb-0">Delete <?php if(isset($_GET['transformer'])) {echo "Transformer";} else if(isset($_GET['operation'])) {echo "Operation";} else if(isset($_GET['account'])) {echo "Account";} else if(isset($_GET['location'])) {echo "Location";} ?></h4>
   </div>
 
     <?php
-    if(isset($_GET['transformador'])) {
+    if(isset($_GET['transformer'])) {
 
-      $delete = strClean($_GET['transformador']);
+      $delete = strClean($_GET['transformer']);
       $sql = connect()->prepare("SELECT * FROM transformadores WHERE T_Codigo = '$delete'");
 
-    } else if(isset($_GET['operacion'])) {
+    } else if(isset($_GET['operation'])) {
 
-      $delete = strClean($_GET['operacion']);
+      $delete = strClean($_GET['operation']);
       $sql = connect()->prepare("SELECT * FROM operaciones WHERE O_Codigo = '$delete'");
 
-    } else if(isset($_GET['ubicacion'])) {
+    } else if(isset($_GET['location'])) {
 
-      $delete = strClean($_GET['ubicacion']);
+      $delete = strClean($_GET['location']);
       $sql = connect()->prepare("SELECT * FROM municipios WHERE M_Codigo = '$delete'");
 
-    } else if(isset($_GET['cuenta'])) {
+    } else if(isset($_GET['account'])) {
 
-      $delete = strClean($_GET['cuenta']);
+      $delete = strClean($_GET['account']);
       $sql = connect()->prepare("SELECT * FROM usuarios WHERE userCodigo = '$delete'");
     }
 
     if(!isset($delete)) {
-      header('Location: http://localhost/sistema-transformadores/dashboard');
+      header('Location: http://localhost/transformers-under-control/dashboard');
     }
 
     $sql->execute();
@@ -127,91 +127,91 @@
       <div class="card-body">
         <div class="card-title">
         <?php
-          if(isset($_GET['transformador'])) {
-            echo'<h4>Datos del transformador</h4>
+          if(isset($_GET['transformer'])) {
+            echo'<h4>Transformer Info</h4>
               </div>
               <ul class="list-group col-9 mx-auto mt-3">
-                <li class="list-group-item"><strong>Serial:  </strong> ' . $data->T_Codigo . '</li>
-                <li class="list-group-item"><strong>Marca:  </strong> ' . $data->T_Marca . '</li>
-                <li class="list-group-item"><strong>Modelo:  </strong> ' . $data->T_Modelo . '</li>
-                <li class="list-group-item"><strong>Capacidad:  </strong> ' . $data->T_Capacidad . '</li>
-                <li class="list-group-item"><strong>Tipo:  </strong> ' . $data->T_Tipo . '</li>
-                <li class="list-group-item"><strong>Banco Transformador:  </strong> ' . $data->T_Banco . '</li>
-                <li class="list-group-item"><strong>Municipio:  </strong> ' . $data->T_Municipio . '</li>
-                <li class="list-group-item"><strong>Parroquia:  </strong> ' . $data->T_Parroquia . '</li>
-                <li class="list-group-item"><strong>Localidad:  </strong> ' . $data->T_Localidad . '</li>
-                <li class="list-group-item"><strong>Dirección:  </strong> ' . $data->T_Direccion . '</li>
-                <li class="list-group-item"><strong>Estado Actual:  </strong> ' . $data->T_Estado . '</li>
-                <li class="list-group-item"><strong>Años de Garantia:  </strong> ' . $data->T_Garantia . '</li>
+                <li class="list-group-item"><strong>Serial Number:  </strong> ' . $data->T_Codigo . '</li>
+                <li class="list-group-item"><strong>Brand:  </strong> ' . $data->T_Marca . '</li>
+                <li class="list-group-item"><strong>Model:  </strong> ' . $data->T_Modelo . '</li>
+                <li class="list-group-item"><strong>Capacity:  </strong> ' . $data->T_Capacidad . '</li>
+                <li class="list-group-item"><strong>Type:  </strong> ' . $data->T_Tipo . '</li>
+                <li class="list-group-item"><strong>Transformer Bank:  </strong> ' . $data->T_Banco . '</li>
+                <li class="list-group-item"><strong>Municipality:  </strong> ' . $data->T_Municipio . '</li>
+                <li class="list-group-item"><strong>Parish:  </strong> ' . $data->T_Parroquia . '</li>
+                <li class="list-group-item"><strong>Location:  </strong> ' . $data->T_Localidad . '</li>
+                <li class="list-group-item"><strong>Address:  </strong> ' . $data->T_Direccion . '</li>
+                <li class="list-group-item"><strong>Actual State:  </strong> ' . $data->T_Estado . '</li>
+                <li class="list-group-item"><strong>Years of Warranty:  </strong> ' . $data->T_Garantia . '</li>
               </ul>
 
               <form action="' . SERVERURL . 'conexiones/inventario.php?deleteT" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="delete" class="FormularioAjax p-3 d-flex flex-column align-items-center">
                 <input type="hidden" name="delT" value="' . $data->T_Codigo . '">
                 <div class="RespuestaAjax mt-3"></div>
 
-                <button type="submit" class="btn btn-danger mx-auto">Eliminar</button>
+                <button type="submit" class="btn btn-danger mx-auto">Delete</button>
               </form>
               ';
-          } else if(isset($_GET['operacion'])) {
-            echo'<h4>Datos de la operación</h4>
+          } else if(isset($_GET['operation'])) {
+            echo'<h4>Operation Info</h4>
               </div>
               <ul class="list-group col-9 mx-auto mt-3">
-                <li class="list-group-item"><strong>Procedimiento:  </strong> ' . $data->O_Procedimiento . '</li>
-                <li class="list-group-item"><strong>Fecha:  </strong> ' . $data->O_Fecha . '</li>
-                <li class="list-group-item"><strong>N° Serial del Transformador:  </strong> ' . $data->O_Equipo . '</li>
-                <li class="list-group-item"><strong>Estado del Transformador:  </strong> ' . $data->O_EstadoActual . '</li>
-                <li class="list-group-item"><strong>Municipio:  </strong> ' . $data->O_Municipio . '</li>
-                <li class="list-group-item"><strong>Parroquia:  </strong> ' . $data->O_Parroquia . '</li>
-                <li class="list-group-item"><strong>Localidad:  </strong> ' . $data->O_Localidad . '</li>
-                <li class="list-group-item"><strong>Dirección:  </strong> ' . $data->O_Direccion . '</li>
+                <li class="list-group-item"><strong>Process:  </strong> ' . $data->O_Procedimiento . '</li>
+                <li class="list-group-item"><strong>Date:  </strong> ' . $data->O_Fecha . '</li>
+                <li class="list-group-item"><strong>Transformer Serial Number:  </strong> ' . $data->O_Equipo . '</li>
+                <li class="list-group-item"><strong>Transformer Status:  </strong> ' . $data->O_EstadoActual . '</li>
+                <li class="list-group-item"><strong>Municipality:  </strong> ' . $data->O_Municipio . '</li>
+                <li class="list-group-item"><strong>Parish:  </strong> ' . $data->O_Parroquia . '</li>
+                <li class="list-group-item"><strong>Location:  </strong> ' . $data->O_Localidad . '</li>
+                <li class="list-group-item"><strong>Address:  </strong> ' . $data->O_Direccion . '</li>
               </ul>
 
               <form action="' . SERVERURL . 'conexiones/historial.php?deleteO" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="delete" class="FormularioAjax p-3 d-flex flex-column align-items-center">
                 <input type="hidden" name="delO" value="' . $data->O_Codigo . '">
                 <div class="RespuestaAjax mt-3"></div>
 
-                <button type="submit" class="btn btn-danger mx-auto">Eliminar</button>
+                <button type="submit" class="btn btn-danger mx-auto">Delete</button>
               </form>
               ';
-          } else if(isset($_GET['cuenta'])) {
-            echo'<h4>Datos de la cuenta</h4>
+          } else if(isset($_GET['account'])) {
+            echo'<h4>Account Info</h4>
               </div>
               <ul class="list-group col-9 mx-auto mt-3">
-                <li class="list-group-item"><strong>Nombre de Usuario:  </strong> ' . $data->userUsername . '</li>
-                <li class="list-group-item"><strong>Tipo de Cuenta:  </strong> ' . $data->userType . '</li>
-                <li class="list-group-item"><strong>Nombre:  </strong> ' . $data->userName . '</li>
-                <li class="list-group-item"><strong>Apellido:  </strong> ' . $data->userLastname . '</li>
-                <li class="list-group-item"><strong>Cargo:  </strong> ' . $data->userCargo . '</li>
-                <li class="list-group-item"><strong>Correo:  </strong> ' . $data->userEmail . '</li>
+                <li class="list-group-item"><strong>Username:  </strong> ' . $data->userUsername . '</li>
+                <li class="list-group-item"><strong>Account Type:  </strong> ' . $data->userType . '</li>
+                <li class="list-group-item"><strong>Name:  </strong> ' . $data->userName . '</li>
+                <li class="list-group-item"><strong>Last name:  </strong> ' . $data->userLastname . '</li>
+                <li class="list-group-item"><strong>Position:  </strong> ' . $data->userCargo . '</li>
+                <li class="list-group-item"><strong>Email:  </strong> ' . $data->userEmail . '</li>
               </ul>
 
               <form action="' . SERVERURL . 'conexiones/create.php?deleteC" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="delete" class="FormularioAjax p-3 d-flex flex-column align-items-center">
                 <input type="hidden" name="delC" value="' . $data->userCodigo . '">
                 <div class="RespuestaAjax mt-3"></div>
 
-                <button type="submit" class="btn btn-danger mx-auto">Eliminar</button>
+                <button type="submit" class="btn btn-danger mx-auto">Delete</button>
               </form>
             ';
-          } else if(isset($_GET['ubicacion'])) {
+          } else if(isset($_GET['location'])) {
             $datUbic = $data->M_Ubicacion;
 
             $getMunicipio = connect()->prepare("SELECT * FROM municipios WHERE M_Nombre = '$datUbic'");
             $getMunicipio->execute();
             $total = $getMunicipio->fetch(PDO::FETCH_OBJ);
 
-            echo'<h4>Datos de la ubicación</h4>
+            echo'<h4>Location Info</h4>
               </div>
               <ul class="list-group col-9 mx-auto mt-3">
-                <li class="list-group-item"><strong>Nombre de la localidad:  </strong> ' . $data->M_Nombre . '</li>
-                <li class="list-group-item"><strong>Municipio:  </strong> ' . $total->M_Ubicacion . '</li>
-                <li class="list-group-item"><strong>Parroquia:  </strong> ' . $data->M_Ubicacion . '</li>
+                <li class="list-group-item"><strong>Location:  </strong> ' . $data->M_Nombre . '</li>
+                <li class="list-group-item"><strong>Municipality:  </strong> ' . $total->M_Ubicacion . '</li>
+                <li class="list-group-item"><strong>Parish:  </strong> ' . $data->M_Ubicacion . '</li>
               </ul>
 
               <form action="' . SERVERURL . 'conexiones/ubicaciones.php?UDel" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="delete" class="FormularioAjax p-3 d-flex flex-column align-items-center">
                 <input type="hidden" name="delU" value="' . $data->M_Codigo . '">
                 <div class="RespuestaAjax mt-3"></div>
 
-                <button type="submit" class="btn btn-danger mx-auto">Eliminar</button>
+                <button type="submit" class="btn btn-danger mx-auto">Delete</button>
               </form>
               ';
           }

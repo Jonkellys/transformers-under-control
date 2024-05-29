@@ -19,7 +19,7 @@
     session_regenerate_id(true);
 
     session_destroy();
-    header('Location: http://localhost/sistema-transformadores/login');
+    header('Location: http://localhost/transformers-under-control/login');
   }
   include "./conexiones/funciones.php";
 
@@ -27,7 +27,7 @@
   $tipoData = strClean($_GET['tipoData']);
 
   if(!isset($informe) || !isset($tipoData)) {
-    header('Location: http://localhost/sistema-transformadores/reportes');
+    header('Location: http://localhost/transformers-under-control/reportes');
   }
 ?>
 
@@ -39,7 +39,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include "./modulos/links.php"; ?>
-  <title>Nuevo Reporte | <?php echo NOMBRE; ?></title>
+  <title>New Record | <?php echo NOMBRE; ?></title>
 </head>
 
 <style media="screen">
@@ -85,12 +85,12 @@
   <div class="bg-light shadow p-3 charList" style="overflow-y: scroll;" id="charBox">
 
     <form class=" ">
-      <input type="button" onclick="printDiv('contenido')" value="Imprimir Reporte" id="valueBtn" class="btn btn-primary">
+      <input type="button" onclick="printDiv('contenido')" value="Print Record" id="valueBtn" class="btn btn-primary">
     </form>
 
-    <p class="sm-hidden mt-3">Para mejor visualización coloque su teléfono de forma horizontal</p>
+    <p class="sm-hidden mt-3">Turn your phone sideways</p>
 
-    <h4 class="mt-4">Características:</h4>
+    <h4 class="mt-4">Characteristics:</h4>
     <?php
 
       $estado = strClean($_GET['estado']);
@@ -118,55 +118,55 @@
         if($informe == "General") {
           echo '<span class="py-2"><strong>Reporte:  </strong> General</span>';
         } else {
-          if ($informe == "transformadores") {
+          if ($informe == "transformers") {
             echo '
-              <span class="py-2 border-bottom-1"><strong>Reporte de:  </strong> Transformadores</span>
-              <span class="py-2 border-bottom-1"><strong>Estado:  </strong> ' . $estado . '</span>
-              <span class="py-2 border-bottom-1"><strong>Capacidad:  </strong> ';
-              if ($capacidad == "Ninguno"){
-                echo 'Ninguno';
-              } else if($capacidad != "Todos" && $capacidad != "Ninguno") {
+              <span class="py-2 border-bottom-1"><strong>Record of:  </strong> Transformers</span>
+              <span class="py-2 border-bottom-1"><strong>State:  </strong> ' . $estado . '</span>
+              <span class="py-2 border-bottom-1"><strong>Capacity:  </strong> ';
+              if ($capacidad == "None"){
+                echo 'None';
+              } else if($capacidad != "All" && $capacidad != "None") {
                 echo $capacidad . ' kW' ;
               } else {
-                echo 'Todas';
+                echo 'All';
               }
               echo '</span>
-              <span class="py-2 border-bottom-1"><strong>Marca:  </strong> ' . $marca . '</span>
-              <span class="py-2 border-bottom-1"><strong>Modelo:  </strong> ' . $modelo . '</span>
-              <span class="py-2 border-bottom-1"><strong>Años de Garantía:  </strong> ' . $anos . '</span>
-              <span class="py-2 border-bottom-1"><strong>Tipo:  </strong> ' . $tipo . '</span>
-              <span class="py-2"><strong>Banco Transformador:  </strong> ' . $banco . '</span>
+              <span class="py-2 border-bottom-1"><strong>Brand:  </strong> ' . $marca . '</span>
+              <span class="py-2 border-bottom-1"><strong>Model:  </strong> ' . $modelo . '</span>
+              <span class="py-2 border-bottom-1"><strong>Years of Warranty:  </strong> ' . $anos . '</span>
+              <span class="py-2 border-bottom-1"><strong>Type:  </strong> ' . $tipo . '</span>
+              <span class="py-2"><strong>Transformer Bank:  </strong> ' . $banco . '</span>
             ';
-          } elseif ($informe == "operaciones") {
+          } elseif ($informe == "operations") {
             echo '
-              <span class="py-2 border-bottom-1"><strong>Reporte de:  </strong> Operaciones</span>
-              <span class="py-2 border-bottom-1"><strong>Procedimiento:  </strong> ' . $procedimiento . '</span>
+              <span class="py-2 border-bottom-1"><strong>Record of:  </strong> Operations</span>
+              <span class="py-2 border-bottom-1"><strong>Process:  </strong> ' . $procedimiento . '</span>
             ';
 
-            if($fecha == "Todos" || $fecha == "Ninguno") {
-              echo '<span class="py-2 border-bottom-1"><strong>Fecha:  </strong> ' . $fecha . '</span>';
+            if($fecha == "All" || $fecha == "None") {
+              echo '<span class="py-2 border-bottom-1"><strong>Date:  </strong> ' . $fecha . '</span>';
             } else {
-              echo '<span class="py-2 border-bottom-1"><strong>Fecha de Inicio:  </strong> ' . $fechaInicio . '</span>';
-              echo '<span class="py-2 border-bottom-1"><strong>Fecha de Fin:  </strong> ' . $fechaFin . '</span>';
+              echo '<span class="py-2 border-bottom-1"><strong>Begin:  </strong> ' . $fechaInicio . '</span>';
+              echo '<span class="py-2 border-bottom-1"><strong>End:  </strong> ' . $fechaFin . '</span>';
             }
 
             echo '
-              <span class="py-2 border-bottom-1"><strong>Serial del Transformador:  </strong> ' . $serial . '</span>
+              <span class="py-2 border-bottom-1"><strong>Transformer`s Serial Number:  </strong> ' . $serial . '</span>
             ';
           }
           echo '
-            <span class="py-2 border-bottom-1"><strong>Ubicación:  </strong> ';
-            if($mun == "Todos") {
-              echo "Todos";
-            } else if($mun == "Ninguno") {
-              echo "Ninguno";
+            <span class="py-2 border-bottom-1"><strong>Location:  </strong> ';
+            if($mun == "All") {
+              echo "All";
+            } else if($mun == "None") {
+              echo "None";
             }else {
               echo munChoose($mun);
             }
 
           echo'</span>
-            <span class="py-2 border-bottom-1"><strong>Parroquia:  </strong> ' . $par . '</span>
-            <span class="py-2 border-bottom-1"><strong>Localidad:  </strong> ' . $loc . '</span>
+            <span class="py-2 border-bottom-1"><strong>Parish:  </strong> ' . $par . '</span>
+            <span class="py-2 border-bottom-1"><strong>Location:  </strong> ' . $loc . '</span>
           ';
         }
       ?>
@@ -186,17 +186,16 @@
   <div class="p-4 mr-3" style="overflow-x: scroll; width: max-content;">
     <div class="shadow bg-white p-4 d-flex flex-column align-items-center" id="contenido" style="width: 340mm; height: fit-content;">
 
-    <div class="w-100 d-flex flex-row justify-content-between">
+    <div class="w-50 d-flex flex-row justify-content-between">
       <img style="width: 17%; height: 33%;" src="<?php echo media; ?>img/name.png" alt="logo">
-      <p class="text-center px-5 mr-5">República Bolivariana de Venezuela <br> Estado Sucre <br> Corporación Nacional Eléctrica <br> Central de Servicios Carúpano</p>
-      <p class="ml-5" style="font-size: 14px; font-weight: bold;">RIF: J-200100141</p>
+      <p class="text-center px-5 mr-5">Transformers Under Control</p>
     </div>
 
       <?php
         if($informe == "General") {
           $query = connect()->query("SELECT * FROM municipios WHERE M_Tipo = 'Municipio'");
 
-          echo '<div class="text-center font-weight-bold my-3">Reporte General <br> Transformadores instalados en la zona Carúpano-Paría</div>';
+          echo '<div class="text-center font-weight-bold my-3">General Record<br> Transformers Installed in the Area</div>';
 
           while ($rows = $query->fetch()) {
             $mun = $rows['M_Nombre'];
@@ -206,41 +205,41 @@
               <div class="w-100 my-3 mx-auto" id="table">
                 <table class="w-100">
                   <tr><th class="p-1">' . munChoose($mun) . '</th></tr>
-                  <tr><td class="p-1">Transformadores Totales: ' . getMunCount(false, $mun) . '</td></tr>
+                  <tr><td class="p-1">Total Transformers: ' . getMunCount(false, $mun) . '</td></tr>
                 </table>
                 <table class="w-100">
                   <tr>';
 
-                    if(munChoose($mun) == "Central de Servicios") {
-                      echo '<td class="p-1">Transformadores Almacenados: ' . getMunCount('Almacenado', $mun) . '</td>';
+                    if(munChoose($mun) == "Service Central") {
+                      echo '<td class="p-1">Transformers In Stock: ' . getMunCount('Stock', $mun) . '</td>';
                     } else {
-                      echo '<td class="p-1">Transformadores Instalados: ' . getMunCount('Instalado', $mun) . '</td>';
+                      echo '<td class="p-1">Installed Transformers: ' . getMunCount('Installed', $mun) . '</td>';
                     }
                     echo '
-                    <td class="p-1">Transformadores Dañados: ' . getMunCount('Dañado', $mun) . '</td>
-                    <td class="p-1">Capacidad Instalada: ' . getMunCapacidad($mun) . '</td>
+                    <td class="p-1">Damaged Transformers: ' . getMunCount('Damaged', $mun) . '</td>
+                    <td class="p-1">Installed Capacity: ' . getMunCapacidad($mun) . '</td>
                   </tr>
                 </table>
                 <table class="w-100">
                   <tr>
-                    <th class="p-1">Información de los Transformadores</th>
+                    <th class="p-1">Transformers Info</th>
                   </tr>
                 </table>
                 <table class="w-100">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Serial</th>
-                      <th>Estado</th>
-                      <th>Capacidad</th>
-                      <th>Marca</th>
-                      <th>Modelo</th>
-                      <th>Años de<br>Garantía</th>
-                      <th>Tipo</th>
-                      <th>Banco<br>Transformador</th>
-                      <th>Parroquia</th>
-                      <th>Localidad</th>
-                      <th>Dirección</th>
+                      <th>Serial Number</th>
+                      <th>State</th>
+                      <th>Capacity</th>
+                      <th>Brand</th>
+                      <th>Model</th>
+                      <th>Years of<br>Warranty</th>
+                      <th>Type</th>
+                      <th>Transformer<br>Bank</th>
+                      <th>Parish</th>
+                      <th>Location</th>
+                      <th>Address</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -250,7 +249,7 @@
                     $munTrans = connect()->query("SELECT * FROM transformadores WHERE T_Municipio = '$mun'");
 
                     if($munTrans->rowCount() <= 0) {
-                      echo '</tbody></table><table class="w-100 p-1"><tr><td class="text-center">Ninguno</td></tr></table>';
+                      echo '</tbody></table><table class="w-100 p-1"><tr><td class="text-center">None</td></tr></table>';
                     } else {
                       while ($row = $munTrans->fetch()) {
                         echo '
@@ -277,7 +276,7 @@
                   </table>
                 <table class="w-100">
                   <tr>
-                    <th class="p-1">Operaciones Realizadas</th>
+                    <th class="p-1">Operations</th>
                   </tr>
                 </table>
                 ';
@@ -286,20 +285,20 @@
                 $num2 = 1;
 
                 if($munOp->rowCount() <= 0) {
-                  echo '<table class="w-100 p-1 last"><tr><td class="text-center">Ninguno</td></tr></table>';
+                  echo '<table class="w-100 p-1 last"><tr><td class="text-center">None</td></tr></table>';
                 } else {
                   echo '
                 <table class="w-100 last">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Procedimiento</th>
-                      <th>Fecha</th>
-                      <th>Serial del Transformador</th>
-                      <th>Estado Final</th>
-                      <th>Parroquia</th>
-                      <th>Localidad</th>
-                      <th>Dirección</th>
+                      <th>Process</th>
+                      <th>Date</th>
+                      <th>Transformer`s Serial Number</th>
+                      <th>Final State</th>
+                      <th>Parish</th>
+                      <th>Location</th>
+                      <th>Address</th>
                     </tr>
                   </thead>
                   <tbody>';
@@ -326,13 +325,13 @@
             ';
           }
         } else {
-          if ($informe == "transformadores") {
+          if ($informe == "transformers") {
             echo '
-              <div class="text-center font-weight-bold mt-3">Reporte de Transformadores</div>
+              <div class="text-center font-weight-bold mt-3">Transformer`s Record</div>
             ';
 
-            if($tipoData == "Todos") {
-              $TTodosQuery = connect()->query("SELECT * FROM transformadores");
+            if($tipoData == "All") {
+              $TAllQuery = connect()->query("SELECT * FROM transformadores");
               $num = 1;
 
               echo '
@@ -341,27 +340,27 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Serial</th>
-                        <th>Estado</th>
-                        <th>Capacidad</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Años de<br>Garantía</th>
-                        <th>Tipo</th>
-                        <th>Banco<br>Transformador</th>
-                        <th>Ubicación</th>
-                        <th>Parroquia</th>
-                        <th>Localidad</th>
-                        <th>Dirección</th>
+                        <th>Serial Number</th>
+                        <th>State</th>
+                        <th>Capacity</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Years of<br>Warranty</th>
+                        <th>Type</th>
+                        <th>Transformer<br>Bank</th>
+                        <th>Municipality</th>
+                        <th>Parish</th>
+                        <th>Location</th>
+                        <th>Address</th>
                       </tr>
                     </thead>
                     <tbody>
                   ';
 
-                  if($TTodosQuery->rowCount() <= 0) {
-                    echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">Ninguno</td></tr>';
+                  if($TAllQuery->rowCount() <= 0) {
+                    echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">None</td></tr>';
                   } else {
-                    while ($filas = $TTodosQuery->fetch()) {
+                    while ($filas = $TAllQuery->fetch()) {
                       $municipio = $filas['T_Municipio'];
                       echo '
                         <tr>
@@ -389,78 +388,78 @@
                 </div>
               ';
 
-            } else if($tipoData == "Personalizado") {
+            } else if($tipoData == "Personalized") {
 
               $title = "";
 
-              if($estado == "Todos") {
+              if($estado == "All") {
                 $estadoQ = "";
-              } else if($estado != "Todos" && $estado != "Ninguno") {
+              } else if($estado != "All" && $estado != "None") {
                 $estadoQ = " AND T_Estado = '$estado'";
-                $title = $title . "Estado: " . $estado . ". ";
+                $title = $title . "State: " . $estado . ". ";
               }
 
-              if($capacidad == "Todos") {
+              if($capacidad == "All") {
                 $capacidadQ = "";
-              } else if($capacidad != "Todos" && $capacidad != "Ninguno") {
+              } else if($capacidad != "All" && $capacidad != "None") {
                 $capacidadQ = " AND T_Capacidad = '$capacidad'";
-                $title = $title . "Capacidad: " . $capacidad . " kW. ";
+                $title = $title . "Capacity: " . $capacidad . " kW. ";
               }
 
-              if($marca == "Todos") {
+              if($marca == "All") {
                 $marcaQ = "";
-              } else if($marca != "Todos" && $marca != "Ninguno") {
+              } else if($marca != "All" && $marca != "None") {
                 $marcaQ = " AND T_Marca = '$marca'";
-                $title = $title . "Marca: " . $marca . ". ";
+                $title = $title . "Brand: " . $marca . ". ";
               }
 
-              if($modelo == "Todos") {
+              if($modelo == "All") {
                 $modeloQ = "";
-              } else if($modelo != "Todos" && $modelo != "Ninguno") {
+              } else if($modelo != "All" && $modelo != "None") {
                 $modeloQ = " AND T_Modelo = '$modelo'";
-                $title = $title . "Modelo: " . $modelo . ". ";
+                $title = $title . "Model: " . $modelo . ". ";
               }
 
-              if($anos == "Todos") {
+              if($anos == "All") {
                 $anosQ = "";
-              } else if($anos != "Todos" && $anos != "Ninguno") {
+              } else if($anos != "All" && $anos != "None") {
                 $anosQ = " AND T_Garantia = '$anos'";
-                $title = $title . "Años de Garantía: " . $anos . ". ";
+                $title = $title . "Years of Warranty: " . $anos . ". ";
               }
 
-              if($mun == "Todos") {
+              if($mun == "All") {
                 $munQ = "";
               } else{
                 $munQ = " AND T_Municipio = '$mun'";
-                $title = $title . "Ubicación: " . munChoose($mun) . ". ";
+                $title = $title . "Municipality: " . munChoose($mun) . ". ";
               }
 
-              if($par == "Todos") {
+              if($par == "All") {
                 $parQ = "";
               } else {
                 $parQ = " AND T_Parroquia = '$par'";
-                $title = $title . "Parroquia: " . $par . ". ";
+                $title = $title . "Parish: " . $par . ". ";
               }
 
-              if($loc == "Todos") {
+              if($loc == "All") {
                 $locQ = "";
               } else {
                 $locQ = " AND T_Localidad = '$loc'";
-                $title = $title . "Localidad: " . $loc . ". ";
+                $title = $title . "Location: " . $loc . ". ";
               }
 
-              if($tipo == "Todos") {
+              if($tipo == "All") {
                 $tipoQ = "";
-              } else if($tipo != "Todos" && $tipo != "Ninguno") {
+              } else if($tipo != "All" && $tipo != "None") {
                 $tipoQ = " AND T_Tipo = '$tipo'";
-                $title = $title . "Tipo: " . $tipo . ". ";
+                $title = $title . "Type: " . $tipo . ". ";
               }
 
-              if($banco == "Todos") {
+              if($banco == "All") {
                 $bancoQ = "";
-              } else if($banco != "Todos" && $banco != "Ninguno") {
+              } else if($banco != "All" && $banco != "None") {
                 $bancoQ = " AND T_Banco = '$banco'";
-                $title = $title . "Banco Transformador: " . $banco . ". ";
+                $title = $title . "Transformer Bank: " . $banco . ". ";
               }
 
               $resultQuery = "SELECT * FROM transformadores WHERE id != 0" . $estadoQ . $capacidadQ . $marcaQ . $modeloQ . $anosQ . $munQ . $parQ . $locQ . $tipoQ . $bancoQ;
@@ -469,7 +468,7 @@
 
               if(strlen($title) > 1) {
                 echo '
-                  <div class="text-center font-weight-bold mb-3">Transformadores con ' . $title . '</div>';
+                  <div class="text-center font-weight-bold mb-3">Transformers with ' . $title . '</div>';
               }
 
               echo '
@@ -480,55 +479,55 @@
                         <th>#</th>
                         <th>Serial</th>';
 
-                          if($estado == "Todos") {
-                            echo '<th>Estado</th>';
+                          if($estado == "All") {
+                            echo '<th>State</th>';
                           }
 
-                          if($capacidad == "Todos") {
-                            echo '<th>Capacidad</th>';
+                          if($capacidad == "All") {
+                            echo '<th>Capacity</th>';
                           }
 
-                          if($marca == "Todos") {
-                            echo '<th>Marca</th>';
+                          if($marca == "All") {
+                            echo '<th>Brand</th>';
                           }
 
-                          if($modelo == "Todos") {
-                            echo '<th>Modelo</th>';
+                          if($modelo == "All") {
+                            echo '<th>Model</th>';
                           }
 
-                          if($anos == "Todos") {
-                            echo '<th>Años de<br>Garantía</th>';
+                          if($anos == "All") {
+                            echo '<th>Years of<br>Warranty</th>';
                           }
 
-                          if($tipo == "Todos") {
-                            echo '<th>Tipo</th>';
+                          if($tipo == "All") {
+                            echo '<th>Type</th>';
                           }
 
-                          if($banco == "Todos") {
-                            echo '<th>Banco<br>Transformador</th>';
+                          if($banco == "All") {
+                            echo '<th>Transformer<br>Bank</th>';
                           }
 
-                            if($mun == "Todos") {
-                              echo '<th>Ubicación</th>';
+                            if($mun == "All") {
+                              echo '<th>Municipality</th>';
                             }
 
-                            if($par == "Todos") {
-                              echo '<th>Parroquia</th>';
+                            if($par == "All") {
+                              echo '<th>Parish</th>';
                             }
 
-                            if($loc == "Todos") {
-                              echo '<th>Localidad</th>';
+                            if($loc == "All") {
+                              echo '<th>Locality</th>';
                             }
 
                             echo '
-                          <th>Dirección</th>
+                          <th>Address</th>
                       <tr>
                     </thead>
                     <tbody>
               ';
 
               if($TPerQuery->rowCount() <= 0) {
-                echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">Ninguno</td></tr>';
+                echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">None</td></tr>';
               } else {
                 while ($filas = $TPerQuery->fetch()) {
                   $municipio = $filas['T_Municipio'];
@@ -538,44 +537,44 @@
                     <td>' . $num++ . '</td>
                     <td>' . $filas['T_Codigo'] . '</td>';
 
-                      if($estado == "Todos") {
+                      if($estado == "All") {
                         echo '<td>' . $filas['T_Estado'] . '</td>';
                       }
 
-                      if($capacidad == "Todos") {
+                      if($capacidad == "All") {
                         echo '<td>' . $filas['T_Capacidad'] . ' kW</td>';
                       }
 
-                      if($marca == "Todos") {
+                      if($marca == "All") {
                         echo '<td>' . $filas['T_Marca'] . '</td>';
                       }
 
-                      if($modelo == "Todos") {
+                      if($modelo == "All") {
                         echo '<td>' . $filas['T_Modelo'] . '</td>';
                       }
 
-                      if($anos == "Todos") {
+                      if($anos == "All") {
                         echo '<td>' . $filas['T_Garantia'] . '</td>';
                       }
 
 
-                      if($tipo == "Todos") {
+                      if($tipo == "All") {
                         echo '<td>' . $filas['T_Tipo'] . '</td>';
                       }
 
-                      if($banco == "Todos") {
+                      if($banco == "All") {
                         echo '<td>' . $filas['T_Banco'] . '</td>';
                       }
 
-                      if($mun == "Todos") {
+                      if($mun == "All") {
                         echo '<td>' . munChoose($municipio) . '</td>';
                       }
 
-                      if($par == "Todos") {
+                      if($par == "All") {
                         echo '<td>' . $filas['T_Parroquia'] . '</td>';
                       }
 
-                      if($loc == "Todos") {
+                      if($loc == "All") {
                         echo '<td>' . $filas['T_Localidad'] . '</td>';
                       }
 
@@ -593,13 +592,13 @@
               ';
             }
 
-          } elseif ($informe == "operaciones") {
+          } elseif ($informe == "operations") {
             echo '
-              <div class="text-center font-weight-bold mt-3">Reporte de Operaciones</div>
+              <div class="text-center font-weight-bold mt-3">Record of Operations</div>
             ';
 
-            if($tipoData == "Todos") {
-              $OTodosQuery = connect()->query("SELECT * FROM operaciones");
+            if($tipoData == "All") {
+              $OAllQuery = connect()->query("SELECT * FROM operaciones");
               $num = 1;
 
               echo '
@@ -608,23 +607,23 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Procedimiento</th>
-                        <th>Fecha</th>
-                        <th>Serial del Transformador</th>
-                        <th>Estado Final</th>
-                        <th>Ubicación</th>
-                        <th>Parroquia</th>
-                        <th>Localidad</th>
-                        <th>Dirección</th>
+                        <th>Process</th>
+                        <th>Date</th>
+                        <th>Transformer Serial Number</th>
+                        <th>Final State</th>
+                        <th>Municipality</th>
+                        <th>Parish</th>
+                        <th>Location</th>
+                        <th>Address</th>
                       </tr>
                     </thead>
                     <tbody>
                   ';
 
-                  if($OTodosQuery->rowCount() <= 0) {
-                    echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">Ninguno</td></tr>';
+                  if($OAllQuery->rowCount() <= 0) {
+                    echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">None</td></tr>';
                   } else {
-                    while ($filas = $OTodosQuery->fetch()) {
+                    while ($filas = $OAllQuery->fetch()) {
                       $municipio = $filas['O_Municipio'];
 
                       echo '
@@ -649,49 +648,49 @@
                 </div>
               ';
 
-            } else if($tipoData == "Personalizado") {
+            } else if($tipoData == "Personalized") {
               $titulo = "";
 
-              if($procedimiento == "Todos") {
+              if($procedimiento == "All") {
                 $procedimientoQ = "";
-              } else if($procedimiento != "Todos" && $procedimiento != "Ninguno") {
+              } else if($procedimiento != "All" && $procedimiento != "None") {
                 $procedimientoQ = " AND O_Procedimiento = '$procedimiento'";
-                $titulo = $titulo . "Procedimiento: " . $procedimiento . ". ";
+                $titulo = $titulo . "Process: " . $procedimiento . ". ";
               }
 
-              if($fecha == "Todos") {
+              if($fecha == "All") {
                 $fechaQ = "";
-              } else if($fecha != "Todos" && $fecha != "Ninguno") {
+              } else if($fecha != "All" && $fecha != "None") {
                 $fechaQ = " AND O_Fecha < '$fechaFin' AND O_Fecha > '$fechaInicio'";
-                $titulo = $titulo . "Fecha desde: " . $fechaInicio . " - hasta: " . $fechaFin . ". ";
+                $titulo = $titulo . "Begin: " . $fechaInicio . " - End: " . $fechaFin . ". ";
               }
 
-              if($serial == "Todos") {
+              if($serial == "All") {
                 $serialQ = "";
-              } else if($serial != "Todos" && $serial != "Ninguno") {
+              } else if($serial != "All" && $serial != "None") {
                 $serialQ = " AND O_Equipo = '$serial'";
-                $titulo = $titulo . "Serial: " . $serial . ". ";
+                $titulo = $titulo . "Serial Number: " . $serial . ". ";
               }
 
-              if($mun == "Todos") {
+              if($mun == "All") {
                 $munQ = "";
-              } else if($mun != "Todos" && $mun != "Ninguno") {
+              } else if($mun != "All" && $mun != "None") {
                 $munQ = " AND O_Municipio = '$mun'";
-                $titulo = $titulo . "Ubicación: " . munChoose($mun) . ". ";
+                $titulo = $titulo . "Municipality: " . munChoose($mun) . ". ";
               }
 
-              if($par == "Todos") {
+              if($par == "All") {
                 $parQ = "";
-              } else if($par != "Todos" && $par != "Ninguno") {
+              } else if($par != "All" && $par != "None") {
                 $parQ = " AND O_Parroquia = '$par'";
-                $titulo = $titulo . "Parroquia: " . $par . ". ";
+                $titulo = $titulo . "Parish: " . $par . ". ";
               }
 
-              if($loc == "Todos") {
+              if($loc == "All") {
                 $locQ = "";
-              } else if($loc != "Todos" && $loc != "Ninguno") {
+              } else if($loc != "All" && $loc != "None") {
                 $locQ = " AND O_Localidad = '$loc'";
-                $titulo = $titulo . "Localidad: " . $loc . ". ";
+                $titulo = $titulo . "Location: " . $loc . ". ";
               }
 
               $opResultQuery = "SELECT * FROM operaciones WHERE id != 0" . $procedimientoQ . $fechaQ . $serialQ . $munQ . $parQ . $locQ;
@@ -700,7 +699,7 @@
 
               if(strlen($titulo) > 1) {
                 echo '
-                  <div class="text-center font-weight-bold mb-3">Operaciones con ' . $titulo . '</div>
+                  <div class="text-center font-weight-bold mb-3">Operations with ' . $titulo . '</div>
                 ';
               }
 
@@ -712,40 +711,40 @@
                       <tr>
                         <th>#</th>';
 
-                        if($procedimiento == "Todos") {
-                          echo '<th>Procedimiento</th>';
+                        if($procedimiento == "All") {
+                          echo '<th>Process/th>';
                         }
 
-                        if($fecha == "Todos") {
-                          echo '<th>Fecha</th>';
+                        if($fecha == "All") {
+                          echo '<th>Date</th>';
                         }
 
-                        if($serial == "Todos") {
-                          echo '<th>Serial del Equipo</th>';
+                        if($serial == "All") {
+                          echo '<th>Serial Number</th>';
                         }
 
-                        echo '<th>Estado Final</th>';
+                        echo '<th>Final State</th>';
 
-                        if($mun == "Todos") {
-                          echo '<th>Ubicación</th>';
+                        if($mun == "All") {
+                          echo '<th>Municipality</th>';
                         }
 
-                        if($par == "Todos") {
-                          echo '<th>Parroquia</th>';
+                        if($par == "All") {
+                          echo '<th>Parish</th>';
                         }
 
-                        if($loc == "Todos") {
-                          echo '<th>Localidad</th>';
+                        if($loc == "All") {
+                          echo '<th>Location</th>';
                         }
 
                         echo '
-                          <th>Dirección</th>
+                          <th>Address</th>
                         </tr>
                     </thead>
                     <tbody>';
 
                     if($opPerQuery->rowCount() <= 0) {
-                      echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">Ninguno</td></tr>';
+                      echo '</tbody></table><table class="w-100 p-1"><tbody><tr><td class="text-center">None</td></tr>';
                     } else {
                       while ($fila = $opPerQuery->fetch()) {
                         $municipio = $fila['O_Municipio'];
@@ -754,29 +753,29 @@
                           <tr>
                             <td>' . $num++ . '</td>';
 
-                            if($procedimiento == "Todos") {
+                            if($procedimiento == "All") {
                               echo '<td>' . $fila['O_Procedimiento'] . '</td>';
                             }
 
-                            if($fecha == "Todos") {
+                            if($fecha == "All") {
                               echo '<td>' . $fila['O_Fecha'] . '</td>';
                             }
 
-                            if($serial == "Todos") {
+                            if($serial == "All") {
                               echo '<td>' . $fila['O_Equipo'] . '</td>';
                             }
 
                             echo '<td>' . $fila['O_EstadoActual'] . '</td>';
 
-                            if($mun == "Todos") {
+                            if($mun == "All") {
                               echo '<td>' . munChoose($municipio) . '</td>';
                             }
 
-                            if($par == "Todos") {
+                            if($par == "All") {
                               echo '<td>' . $fila['O_Parroquia'] . '</td>';
                             }
 
-                            if($loc == "Todos") {
+                            if($loc == "All") {
                               echo '<td>' . $fila['O_Localidad'] . '</td>';
                             }
 
@@ -839,7 +838,7 @@
     w.document.write('<style>@media print { @page { size: Legal landscape; font-family: "Arial";} body {font-family: "Arial";} .last { page-break-after: always; } th { font-weight: bolder; } table, th, td { border: 1px solid black !important; text-align: center !important; } } th { font-weight: bold; } table, th, td { border: 1px solid black !important; text-align: center !important; }</style>');
     w.document.write(printContents);
     w.document.write('</body></html>');
-    w.document.title = "Reporte " + date;
+    w.document.title = "Record " + date;
     setTimeout(function() {w.print(); w.close();}, 2000);
 
   }

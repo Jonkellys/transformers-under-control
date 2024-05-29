@@ -24,22 +24,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $dir = strClean($_POST["HDirT"]);
 
       if($procedimiento == "" || $fecha == "" || $equipo == "") {
-        echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
         exit();
       }
 
-      if($procedimiento == "Reparación") {
-        $estado = "Almacenado";
-      } else if($procedimiento == "Instalación") {
-        $estado = "Instalado";
-      } else if($procedimiento == "Retiro") {
-        $estado = "Dañado";
+      if($procedimiento == "Repair") {
+        $estado = "Stock";
+      } else if($procedimiento == "Installation") {
+        $estado = "Installed";
+      } else if($procedimiento == "Removal") {
+        $estado = "Damaged";
       }
 
       $consulta = ejecutar_consulta_simple("SELECT T_Codigo FROM transformadores WHERE T_Codigo = '$equipo'");
 
       if($consulta->rowCount() <= 0) {
-        echo "<script>new swal('¡Error!', 'El número serial ingresado no está registrado en el sistema', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'The entered serial number is already in the system', 'error');</script>";
         exit();
       } else {
 
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         };
 
         if($estadoT == $estado) {
-          echo "<script>new swal('¡Error!', 'El transformador ya se encuentra `" . $estadoT . "`<br> Seleccione otra opción', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'The transformer is already in `" . $estadoT . "` state<br> Choose other option', 'error');</script>";
           exit();
         }
         
@@ -74,50 +74,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $direccion = strClean($_POST["HDireccionAdd"]);
           
             if($dir == "" && $municipio == "") {
-              echo "<script>new swal('¡Error!', 'Debes colocar una ubicación', 'error');</script>";
+              echo "<script>new swal('¡Error!', 'You must choose a Municipality', 'error');</script>";
               exit();
             }
 
             if($municipio != "" && $parroquia == "") {
-              echo "<script>new swal('¡Error!', 'Debes colocar una parroquia', 'error');</script>";
+              echo "<script>new swal('¡Error!', 'You must choose a Parish', 'error');</script>";
               exit();
             }
 
             if($parroquia != "" && $localidad == "") {
-              echo "<script>new swal('¡Error!', 'Debes colocar una localidad', 'error');</script>";
+              echo "<script>new swal('¡Error!', 'You must choose a Location', 'error');</script>";
               exit();
             }
 
             if($localidad != "" && $direccion == "") {
-              echo "<script>new swal('¡Error!', 'Debes colocar una dirección', 'error');</script>";
+              echo "<script>new swal('¡Error!', 'You must choose an Address', 'error');</script>";
               exit();
             }
           } else {
             $direccion = "Calle La Planta";
             $parroquia = "Santa Catalina";
             $localidad = "Sector El Valle";
-            $municipio = "Central de Servicios";
+            $municipio = "Service Central";
           }
         
 
-        if($estadoT == "Almacenado" && $procedimiento == "Retiro") {
-          echo "<script>new swal('¡Error!', 'Los transformadores `Almacenados` no pueden ser `Retirados`', 'error');</script>";
+        if($estadoT == "Stock" && $procedimiento == "Removal") {
+          echo "<script>new swal('¡Error!', 'The `Stocked` transformers can't be `Removed`', 'error');</script>";
           exit();
         }
 
-        if($estadoT == "Dañado" && $procedimiento == "Instalación") {
-          echo "<script>new swal('¡Error!', 'Los transformadores `Dañados` no pueden ser `Instalados`', 'error');</script>";
+        if($estadoT == "Damaged" && $procedimiento == "Installation") {
+          echo "<script>new swal('¡Error!', 'The `Damaged` transformers can't be `Installed`', 'error');</script>";
           exit();
         }
 
-        if($municipio == "Central de Servicios" && $procedimiento == "Instalación") {
-          echo "<script>new swal('¡Error!', 'No se puede Instalar en `Central de Servicios`, ingrese una ubicación', 'error');</script>";
+        if($municipio == "Service Central" && $procedimiento == "Installation") {
+          echo "<script>new swal('¡Error!', 'You can't Install on `Service Central`, choose a location', 'error');</script>";
           exit();
         }
 
-        if($procedimiento == "Retiro" || $procedimiento == "Reparación") {
+        if($procedimiento == "Removal" || $procedimiento == "Repair") {
 	       $thing = "UPDATE transformadores SET T_Codigo = '$codigoT', T_Estado = '$estado', T_Capacidad = '$capacidadT', T_Municipio = 'Central de Servicios', T_Direccion = 'Calle La Planta', T_Tipo = '$tipoT', T_Banco = '$bancoT', T_Parroquia = 'Santa Catalina', T_Localidad = 'Sector El Valle', T_Marca = '$marcaT', T_Modelo = '$modeloT', T_Garantia = '$garantiaT' WHERE T_Codigo = '$equipo'";
-        } else if($procedimiento != "Retiro") {
+        } else if($procedimiento != "Removal") {
           $thing = "UPDATE transformadores SET T_Codigo = '$codigoT', T_Estado = '$estado', T_Capacidad = '$capacidadT', T_Municipio = '$municipio', T_Direccion = '$direccion', T_Tipo = '$tipoT', T_Banco = '$bancoT', T_Parroquia = '$parroquia', T_Localidad = '$localidad', T_Marca = '$marcaT', T_Modelo = '$modeloT', T_Garantia = '$garantiaT' WHERE T_Codigo = '$equipo'";
         }
 
@@ -129,11 +129,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
        if($stmt->execute()){
          $query->execute();
-         echo "<script>new swal('¡Éxito!', 'Procedimiento registrado correctamente', 'success');</script>";
+         echo "<script>new swal('¡Success!', 'Proccess Added correctly', 'success');</script>";
          echo '<script> location.reload(); </script>';
-       } else{
-         echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
-       }
+       } 
 
       }
 
@@ -157,39 +155,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
       if($procedimiento == "" || $fecha == "" || $equipo == "") {
-        echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
         exit();
       }
 
-      if($procedimiento != "Retiro") {
+      if($procedimiento != "Removal") {
         $municipio = strClean($_POST["HMunicipioAdd"]);
         $parroquia = strClean($_POST["HParroquiaAdd"]);
         $localidad = strClean($_POST["HLocalidadAdd"]);
         $direccion = strClean($_POST["HDireccionUpdate"]);
 
         if($municipio == "" || $parroquia == "" || $localidad == "" || $direccion == "") {
-          echo "<script>new swal('¡Error!', 'Debes llenar todos los campos', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";
           exit();
         }
       } else {
-        $municipio = 'Central de Servicios';
+        $municipio = 'Service Central';
         $parroquia = 'Santa Catalina';
         $localidad = 'Sector El Valle';
         $direccion = 'Calle La Planta';
       }
 
-      if($procedimiento == "Reparación" && $estado != "Almacenado") {
-        $estado = "Almacenado";
-      } else if($procedimiento == "Instalación") {
-        $estado = "Instalado";
-      } else if($procedimiento == "Retiro") {
-        $estado = "Dañado";
+      if($procedimiento == "Repair" && $estado != "Stock") {
+        $estado = "Stock";
+      } else if($procedimiento == "Installation") {
+        $estado = "Installed";
+      } else if($procedimiento == "Removal") {
+        $estado = "Damaged";
       }
 
       $consulta1 = ejecutar_consulta_simple("SELECT T_Codigo FROM transformadores WHERE T_Codigo = '$equipo'");
 
       if($consulta1->rowCount() <= 0) {
-        echo "<script>new swal('¡Error!', 'El número serial ingresado no está registrado en el sistema', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'The entered serial number is not in the system', 'error');</script>";
         exit();
       } else {
         $consulta3 = connect()->query("SELECT * FROM transformadores WHERE T_Codigo = '$equipo'");
@@ -215,10 +213,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($quer->execute()){
           $query1->execute();
-          echo "<script>new swal('¡Éxito!', 'Operación editada correctamente', 'success');</script>";
-          echo '<script> window.location.href = "http://localhost/sistema-transformadores/historial"; </script>';
-        } else{
-          echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
+          echo "<script>new swal('¡Success!', 'Operation updated correctly', 'success');</script>";
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/historial"; </script>';
         }
 
       }
@@ -229,11 +225,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $query = "DELETE FROM operaciones WHERE O_Codigo = '$codigo'";
 
       if(connect()->query($query)) {
-        echo "<script>new swal('¡Éxito!', 'Operación eliminada correctamente', 'success');</script>";
-        echo '<script> window.location.href = "http://localhost/sistema-transformadores/historial"; </script>';
-      } else {
-        echo "<script>new swal('Ocurrió un error', 'Por favor intente de nuevo', 'error');</script>";
-      }
+        echo "<script>new swal('¡Success!', 'Operation deleted correctly', 'success');</script>";
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/historial"; </script>';
+      } 
     }
   }
   catch(PDOException $e) {

@@ -15,4 +15,4 @@ session_start(['name' => 'Sistema']);
     
   session_destroy();
 
-  echo '<script> window.location.href = "http://localhost/sistema-transformadores/login"; </script>';
+  echo '<script> window.location.href = "http://localhost/transformers-under-control/login"; </script>';
