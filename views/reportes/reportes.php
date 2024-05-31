@@ -144,9 +144,10 @@
       <div class="my-3">
         <h6 class="font-weight-bold">Notes:</h6>
         <ul class="list-icons">
-          <li><i class="bx bx-play"></i>  The records will be generated on Legal size paper.</li>
-          <li><i class="bx bx-play"></i> The option 'Location'can't be deactivated.</li>
+          <li><i class="bx bx-play"></i> The records will be generated on Legal sized paper.</li>
+          <li><i class="bx bx-play"></i> The option 'Location' can't be deactivated.</li>
           <li><i class="bx bx-play"></i> If the preview shows the URL address, deactivate the 'Print header and footer' option.</li>
+          <li><i class="bx bx-play"></i> The unchecked options won't be added to be record.</li>
         </ul>
       </div>
     </div>
@@ -158,8 +159,8 @@
         <div class="mb-3 mt-4 themeChoose">
           <select class="custom-select" id="themeChoose">
             <option disabled selected="selected">Choose a topic</option>
-            <option value="transformadores">Transformers</option>
-            <option value="operaciones">Operations</option>
+            <option value="transformers">Transformers</option>
+            <option value="operations">Operations</option>
           </select>
         </div>
 
@@ -264,7 +265,7 @@
 
 
             $.ajax({
-              url: "http://localhost/sistema-transformadores/conexiones/reportForm.php?informe=" + valor,
+              url: "http://localhost/transformers-under-control/conexiones/reportForm.php?informe=" + valor,
               type: 'GET',
               data: $(this).val(),
               dataType: 'html',

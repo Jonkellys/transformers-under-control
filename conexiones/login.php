@@ -51,7 +51,7 @@
       }
         
   } else {
-      echo "<script>new swal('¡Error!', 'The user doesn't exists', 'error');</script>";
+      echo "<script>new swal('¡Error!', 'The user doesn`t exists', 'error');</script>";
     exit();
   }
                     

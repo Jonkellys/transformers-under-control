@@ -194,11 +194,11 @@
 
                           if($_SESSION['tipo'] == "Admin") {
                           echo "<td class='mt-0'>
-                            <a class='btn btn-sm btn-info' href='editar?ubicacion=" . $rows1['M_Codigo'] . "'>
+                            <a class='btn btn-sm btn-info' href='editar?location=" . $rows1['M_Codigo'] . "'>
                               <span class='tf-icons bx bx-edit text-white'></span>
                             </a>
 
-                            <a class='btn btn-sm btn-danger' href='delete?ubicacion=" . $rows1['M_Codigo'] . "'>
+                            <a class='btn btn-sm btn-danger' href='delete?location=" . $rows1['M_Codigo'] . "'>
                               <span class='tf-icons bx bx-trash text-white'></span>
                             </a>
                           </td>";
@@ -362,9 +362,9 @@
                 <input type="hidden" id="MunicipioFind" value="' . $mun . '"/>
                 <div id="locateFind2">
                   <div class="form-group">
-                    <label for="LocalidadFind" class="text-dark mr-2">Localidad:</label>
+                    <label for="LocalidadFind" class="text-dark mr-2">Location:</label>
                     <select id="LocalidadFind" class="form-control input-default" name="LocalidadFind">
-                      <option value="All" selected="selected">Todas <small>(To see more options choose a Parish)</small></option>
+                      <option value="All" selected="selected">All <small>(To see more options choose a Parish)</small></option>
                     </select>
                   </div>
                 </div>
@@ -398,7 +398,7 @@
 
                 <div class="col-2 p-0 mx-2">
                   <div class="card-body d-flex flex-column align-items-center">
-                    <h5 class="card-title text-center">InstalledCapacity</h5>
+                    <h5 class="card-title text-center">Installed Capacity</h5>
                     <span class="badge badge-warning badge-pill font-tiny text-white">' . getMunCapacidad($mun) . '</span>
                   </div>
                 </div>

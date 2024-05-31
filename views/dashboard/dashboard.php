@@ -182,7 +182,7 @@
   <script type="module" src="<?php echo media; ?>extras/chartjs/chart.umd.min.js"></script>
   <script type="module">
     const funcData = <?php echo json_encode(funcData("Installed")) ?>;
-    const damData = <?php echo json_encode(funcData("Damage")) ?>;
+    const damData = <?php echo json_encode(funcData("Damaged")) ?>;
     const data = {
       labels: ["Andrés Mata", "Arismendi", "Benítez", "Bermúdez", "Cajigal", "Libertador", "Mariño", "Valdez"],
       datasets: [{
@@ -193,7 +193,7 @@
         backgroundColor: "rgba(111, 217, 111, 0.5)"
         },
         {
-          label: "Damage",
+          label: "Damaged",
           data: damData,
           borderColor: "rgba(255, 94, 94, 0.9)",
           borderWidth: "0",

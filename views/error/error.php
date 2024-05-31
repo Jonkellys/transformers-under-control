@@ -20,32 +20,23 @@
     <meta name="description" content="" />
 
     <?php include "./modulos/links.php"; ?>
-
-
   </head>
 
   <body class="bg-body">
-    <!-- Content -->
-
-    <!-- Error -->
     <div class="login-form-bg pt-5">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 card text-center pt-3 align-items-center">
-                              <h2 class="mb-2 mx-2">Error <strong class="text-primary">404</strong> </h2>
-        <p class="mb-2 mx-2">Oops! 😖 The URL address wasn't found.</p>
-                                <img
-                                  src="<?php echo media; ?>img/404-error.png"
-                                  alt="page-misc-error-light"
-                                  width="500"
-                                  class="img-fluid m-4"
-                                />
-                </div>
+      <div class="row justify-content-center">
+        <div class="col-xl-6 card text-center pt-3 align-items-center">
+          <h2 class="mb-2 mx-2">Error <strong class="text-primary">404</strong> </h2>
+          <p class="mb-2 mx-2">Oops! 😖 The URL address wasn't found.</p>
+          <img
+            src="<?php echo media; ?>img/404-error.png"
+            alt="page-misc-error-light"
+            width="500"
+            class="img-fluid m-4"
+          />
         </div>
+      </div>
     </div>
-    <!-- /Error -->
-
-    <!-- / Content -->
-
 
     <?php include "./modulos/scripts.php"; ?>
 

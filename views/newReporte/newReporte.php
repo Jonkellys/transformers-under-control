@@ -90,7 +90,7 @@
 
     <p class="sm-hidden mt-3">Turn your phone sideways</p>
 
-    <h4 class="mt-4">Characteristics:</h4>
+    <h4 class="mt-4">Features:</h4>
     <?php
 
       $estado = strClean($_GET['estado']);
@@ -116,7 +116,7 @@
     <ul class="list-group mx-auto mt-3 border-white mb-4">
       <?php
         if($informe == "General") {
-          echo '<span class="py-2"><strong>Reporte:  </strong> General</span>';
+          echo '<span class="py-2"><strong>Record:  </strong> General</span>';
         } else {
           if ($informe == "transformers") {
             echo '
@@ -181,14 +181,20 @@
       border: 1px solid black !important;
       text-align: center !important;
     }
+
+    .logo-img {
+      width: 2rem !important;
+      height: auto !important;
+    }
+    
   </style>
 
   <div class="p-4 mr-3" style="overflow-x: scroll; width: max-content;">
     <div class="shadow bg-white p-4 d-flex flex-column align-items-center" id="contenido" style="width: 340mm; height: fit-content;">
 
-    <div class="w-50 d-flex flex-row justify-content-between">
-      <img style="width: 17%; height: 33%;" src="<?php echo media; ?>img/name.png" alt="logo">
-      <p class="text-center px-5 mr-5">Transformers Under Control</p>
+    <div class="w-75 d-flex flex-row justify-content-center mb-3">
+      <img class="logo-img mr-3" src="<?php echo media; ?>img/logo.png" alt="logo">
+      <p class="text-center my-auto font-x-small fw-500"><?php echo NOMBRE; ?></p>
     </div>
 
       <?php
@@ -326,9 +332,9 @@
           }
         } else {
           if ($informe == "transformers") {
-            echo '
-              <div class="text-center font-weight-bold mt-3">Transformer`s Record</div>
-            ';
+            echo "
+              <div class='text-center font-weight-bold mt-3'>Transformer's Record</div>
+            ";
 
             if($tipoData == "All") {
               $TAllQuery = connect()->query("SELECT * FROM transformadores");
@@ -593,9 +599,9 @@
             }
 
           } elseif ($informe == "operations") {
-            echo '
-              <div class="text-center font-weight-bold mt-3">Record of Operations</div>
-            ';
+            echo "
+              <div class='text-center font-weight-bold mt-3'>Operation's Record</div>
+            ";
 
             if($tipoData == "All") {
               $OAllQuery = connect()->query("SELECT * FROM operaciones");

@@ -25,7 +25,7 @@
         $nombre = strClean($_POST["LAdd"]);
         $ubicacion = strClean($_POST["HParroquiaAdd"]);
         $municipio = strClean($_POST["LMunicipioAdd"]);
-        $tipo = "Location";
+        $tipo = "Localidad";
 
         if($nombre == "" || $ubicacion == "" || $municipio == "") {
           echo "<script>new swal('¡Error!', 'You must complete all fields', 'error');</script>";

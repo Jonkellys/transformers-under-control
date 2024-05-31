@@ -202,11 +202,11 @@
 
                         if($_SESSION['tipo'] == "Admin") {
                         echo "<td class='mt-0 d-flex flex-row justify-content-around'>
-                          <a class='btn btn-sm btn-info' href='editar?operacion=" . $rows['O_Codigo'] . "'>
+                          <a class='btn btn-sm btn-info' href='editar?operation=" . $rows['O_Codigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>
                           </a>
 
-                          <a class='btn btn-sm btn-danger' href='delete?operacion=" . $rows['O_Codigo'] . "'>
+                          <a class='btn btn-sm btn-danger' href='delete?operation=" . $rows['O_Codigo'] . "'>
                             <span class='tf-icons bx bx-trash text-white'></span>
                           </a>
                         </td>";

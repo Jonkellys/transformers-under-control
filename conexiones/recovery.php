@@ -51,7 +51,7 @@
         }
         
         if($pass != $newpass){
-            echo "<script>new swal('¡Error!', 'The passwords don't match', 'error');</script>";
+            echo "<script>new swal('¡Error!', 'The passwords don`t match', 'error');</script>";
             exit();
         }  
 

@@ -14,14 +14,14 @@
 
   @media (min-width: 992px) {
     .logo-img {
-      width: 20% !important;
+      width: 2.5% !important;
       height: auto !important;
       margin-left: 3rem !important;
     }
   }
 </style>
 
-<header class="card rounded-0 w-100 mb-0 p-2 d-flex flex-row justify-content-between">
+<header class="card rounded-0 w-100 mb-0 p-2 d-flex flex-row justify-content-left">
   <img class="my-auto logo-img" src="<?php echo media; ?>img/logo.png" alt="" />
-  <h4><?php echo NOMBRE; ?></h4>
+  <h4 class="text-primary ml-3 my-auto"><?php echo NOMBRE; ?></h4>
 </header>

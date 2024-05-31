@@ -130,7 +130,7 @@
       <div class="card-body px-2 py-4">
         <h4 class="card-title">Update Info</h4>
         <?php
-      if(isset($_GET['transformador'])) {
+      if(isset($_GET['transformer'])) {
         echo '
           <form action="' . SERVERURL . 'conexiones/inventario.php?updateT" name="TUpdate" id="TUpdate" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="save" class="FormularioAjax p-3">
             <div class="form-group">

@@ -115,7 +115,7 @@
           <?php
             if($_SESSION['tipo'] == "Normal") {
               echo '
-                <a class="text-primary" href="editar?cuenta=' . $_SESSION['codigo'] . '">Update Information</a>
+                <a class="text-primary" href="editar?account=' . $_SESSION['codigo'] . '">Update Information</a>
               ';
             }
           ?>
@@ -131,7 +131,7 @@
         <h4>Accounts</h4>
         <div id="accordion-one" class="accordion">
           <div class="d-flex flex-row justify-content-space my-4">
-            <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Añadir Cuenta</button>
+            <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Add Account</button>
           </div>
 
           <div id="collapseOne" class="collapse mt-3 col-11 mx-auto" data-parent="#accordion-one">
@@ -236,11 +236,11 @@
                         <td>" . $rows['userUsername'] . "</td>
                         <td>" . $rows['userType'] . "</td>
                         <td class='mt-0'>
-                          <a class='btn btn-sm btn-info' href='editar?cuenta=" . $rows['userCodigo'] . "'>
+                          <a class='btn btn-sm btn-info' href='editar?account=" . $rows['userCodigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>
                           </a>
 
-                          <a class='btn btn-sm btn-danger' href='delete?cuenta=" . $rows['userCodigo'] . "'>
+                          <a class='btn btn-sm btn-danger' href='delete?account=" . $rows['userCodigo'] . "'>
                             <span class='tf-icons bx bx-trash text-white'></span>
                           </a>
 

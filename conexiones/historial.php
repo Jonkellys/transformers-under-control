@@ -101,17 +101,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
 
         if($estadoT == "Stock" && $procedimiento == "Removal") {
-          echo "<script>new swal('¡Error!', 'The `Stocked` transformers can't be `Removed`', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'The `Stocked` transformers can`t be `Removed`', 'error');</script>";
           exit();
         }
 
         if($estadoT == "Damaged" && $procedimiento == "Installation") {
-          echo "<script>new swal('¡Error!', 'The `Damaged` transformers can't be `Installed`', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'The `Damaged` transformers can`t be `Installed`', 'error');</script>";
           exit();
         }
 
         if($municipio == "Service Central" && $procedimiento == "Installation") {
-          echo "<script>new swal('¡Error!', 'You can't Install on `Service Central`, choose a location', 'error');</script>";
+          echo "<script>new swal('¡Error!', 'You can`t Install on `Service Central`, choose a location', 'error');</script>";
           exit();
         }
 

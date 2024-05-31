@@ -81,7 +81,7 @@
   <div class="container-fluid p-4">
 
     <div class="d-flex flex-row justify-content-space add-btn">
-      <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Añadir Transformador</button>
+      <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-plus-circle text-white"></i> Add Transformer</button>
     </div>
 
     <div id="accordion-one" class="accordion">
@@ -239,11 +239,11 @@
                         <td>" . $rows['T_Banco'] . "</td>";
                         if($_SESSION['tipo'] == "Admin") {
                         echo "<td class='mt-0 d-flex flex-row'>
-                          <a class='btn btn-sm btn-info mr-1' href='editar?transformador=" . $rows['T_Codigo'] . "'>
+                          <a class='btn btn-sm btn-info mr-1' href='editar?transformer=" . $rows['T_Codigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>
                           </a>
 
-                          <a class='btn btn-sm btn-danger mr-1' href='delete?transformador=" . $rows['T_Codigo'] . "'>
+                          <a class='btn btn-sm btn-danger mr-1' href='delete?transformer=" . $rows['T_Codigo'] . "'>
                             <span class='tf-icons bx bx-trash text-white'></span>
                           </a>
                           <a class='btn btn-sm btn-warning' target='_blank' href='" . SERVERURL ."conexiones/send.php?dir=" . $direccion . "'>

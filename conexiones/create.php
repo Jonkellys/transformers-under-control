@@ -40,7 +40,7 @@
                 }
                 
                 if($clave != $confirmar){
-                    echo "<script>new swal('¡Error!', 'The passwords don't match', 'error');</script>";
+                    echo "<script>new swal('¡Error!', 'The passwords don` t match', 'error');</script>";
                     exit();
                 }  
 
@@ -125,7 +125,7 @@
                 
           
                 if($check->rowCount() < 1) {
-                    echo "<script>new swal('¡Can't delete the user!', 'There has to be at least one Admin in the system', 'error');</script>";
+                    echo "<script>new swal('¡Can`t delete the user!', 'There has to be at least one Admin in the system', 'error');</script>";
                     exit();
                 } else {
                     connect()->query($query);
