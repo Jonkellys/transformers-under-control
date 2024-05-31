@@ -106,7 +106,7 @@
               $tipoData = "Personalized";
             }
 
-            echo '<script> window.open("http://localhost/transformers-under-control/newReporte?informe=' . $informe . '&tipoData=' . $tipoData . '&estado=' . $EstadoInput . '&capacidad=' . $CapacidadInput . '&marca=' . $MarcaInput . '&modelo=' . $ModeloInput . '&anos=' . $AnosInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '&tipo=' . $TipoInput . '&banco=' . $BancoInput . '", "_blank"); </script>';
+            echo '<script> window.open("http://localhost/transformers-under-control/newRecord?informe=' . $informe . '&tipoData=' . $tipoData . '&estado=' . $EstadoInput . '&capacidad=' . $CapacidadInput . '&marca=' . $MarcaInput . '&modelo=' . $ModeloInput . '&anos=' . $AnosInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '&tipo=' . $TipoInput . '&banco=' . $BancoInput . '", "_blank"); </script>';
           }
 
         } else if($informe == "operations") {
@@ -168,7 +168,7 @@
               $tipoData = "Personalized";
             }
 
-            echo '<script> window.open("http://localhost/transformers-under-control/newReporte?informe=' . $informe . '&tipoData=' . $tipoData . '&procedimiento=' . $ProcedimientoInput . '&fecha=' . $fecha . '&fechaInicio=' . $fechaInicio . '&fechaFin=' . $fechaFin . '&serial=' . $SerialInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '", "_blank"); </script>';
+            echo '<script> window.open("http://localhost/transformers-under-control/newRecord?informe=' . $informe . '&tipoData=' . $tipoData . '&procedimiento=' . $ProcedimientoInput . '&fecha=' . $fecha . '&fechaInicio=' . $fechaInicio . '&fechaFin=' . $fechaFin . '&serial=' . $SerialInput . '&mun=' . $UbicacionInput . '&par=' . $HParroquiaAdd . '&loc=' . $HLocalidadAdd . '", "_blank"); </script>';
           }
         }
 

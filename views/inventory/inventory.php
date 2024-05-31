@@ -3,7 +3,7 @@
 
   session_start(['name' => 'Sistema']);
 
-  $page = "inventario";
+  $page = "inventory";
 
   if(!isset($_SESSION['token']) || !isset($_SESSION['usuario'])) {
     unset($_SESSION['id']);
@@ -231,7 +231,7 @@
 
                   echo"<tr>
                         <th> <strong>" . $num++ . "</strong></th>
-                        <td><a class='text-info' href='transformador?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
+                        <td><a class='text-info' href='transformer?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
                         <td>" . $rows['T_Estado'] . "</td>
                         <td>" . $rows['T_Capacidad'] . " kW</td>
                         <td>" . $rows['T_Municipio'] . "</td>
@@ -239,7 +239,7 @@
                         <td>" . $rows['T_Banco'] . "</td>";
                         if($_SESSION['tipo'] == "Admin") {
                         echo "<td class='mt-0 d-flex flex-row'>
-                          <a class='btn btn-sm btn-info mr-1' href='editar?transformer=" . $rows['T_Codigo'] . "'>
+                          <a class='btn btn-sm btn-info mr-1' href='update?transformer=" . $rows['T_Codigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>
                           </a>
 

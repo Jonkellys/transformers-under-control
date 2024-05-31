@@ -10,47 +10,47 @@
   }
 
   function menuInv($name) {
-    if($name == "inventario") {
+    if($name == "inventory") {
       echo 'class="btn disabled p-2 mr-1"';
     } 
     else {
-      echo 'href="inventario"  class="btn btn-primary p-2 mr-1"';
+      echo 'href="inventory"  class="btn btn-primary p-2 mr-1"';
     }
   }
 
   function menuHis($name) {
-    if($name == "historial") {
+    if($name == "operations") {
       echo 'class="btn disabled p-2 mr-1"';
     } 
     else {
-      echo 'href="historial"  class="btn btn-primary p-2 mr-1"';
+      echo 'href="operations"  class="btn btn-primary p-2 mr-1"';
     }
   }
 
   function menuUbic($name) {
-    if($name == "ubicaciones") {
+    if($name == "locations") {
       echo 'class="btn disabled p-2 mr-1"';
     } 
     else {
-      echo 'href="ubicaciones"  class="btn btn-primary p-2 mr-1"';
+      echo 'href="locations"  class="btn btn-primary p-2 mr-1"';
     }
   }
   
   function menuFile($name) {
-    if($name == "reportes") {
+    if($name == "records") {
       echo 'class="btn disabled p-2 mr-1"';
     } 
     else {
-      echo 'href="reportes"  class="btn btn-primary p-2 mr-1"';
+      echo 'href="records"  class="btn btn-primary p-2 mr-1"';
     }
   }
 
   function menuConf($name) {
-    if($name == "configuraciones") {
+    if($name == "configurations") {
       echo 'class="btn disabled p-2 mr-1"';
     } 
     else {
-      echo 'href="configuraciones"  class="btn btn-primary p-2 mr-1"';
+      echo 'href="configurations"  class="btn btn-primary p-2 mr-1"';
     }
   }
 ?>

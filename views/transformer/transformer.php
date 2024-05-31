@@ -45,7 +45,7 @@
   <?php include "./modulos/menu.php"; ?>
 
   <div class="d-flex flex-row justify-content-between mb-4 ms-3">
-    <a class="btn btn-outline-primaty py-2 text-primary ml-4 nav-icon" href="inventario">
+    <a class="btn btn-outline-primaty py-2 text-primary ml-4 nav-icon" href="inventory">
       <i class="bx bx-arrow-back text-primary"></i> Return
     </a>
   </div>
@@ -105,11 +105,11 @@
         <?php
           if($_SESSION['tipo'] == "Admin") {
             echo "
-            <a class='btn btn-info m-1' href='editar?transformador=" . $data->T_Codigo . "'>
+            <a class='btn btn-info m-1' href='update?transformer=" . $data->T_Codigo . "'>
               <span class='tf-icons bx bx-edit text-white'></span> Update Transformer
             </a>
 
-            <a class='btn btn-danger m-1' href='delete?transformador=" . $data->T_Codigo . "'>
+            <a class='btn btn-danger m-1' href='delete?transformer=" . $data->T_Codigo . "'>
               <span class='tf-icons bx bx-trash text-white'></span>Delete Transformer
             </a>";
           }
@@ -217,7 +217,7 @@
 
         while ($rows = $stmt->fetch()) {
           echo '
-            <li class="list-group-item d-flex p-2 extra-item mb-2"><p class="extra-thing mb-0"><strong>Serial Number:  </strong><a class="text-primary" href="transformador?serial=' . $rows['T_Codigo'] . '">' . $rows['T_Codigo'] . '</a></p> <p class="extra-thing mb-0"><strong>Capacity: </strong>' . $rows['T_Capacidad'] . ' kW</p></li>';
+            <li class="list-group-item d-flex p-2 extra-item mb-2"><p class="extra-thing mb-0"><strong>Serial Number:  </strong><a class="text-primary" href="transformer?serial=' . $rows['T_Codigo'] . '">' . $rows['T_Codigo'] . '</a></p> <p class="extra-thing mb-0"><strong>Capacity: </strong>' . $rows['T_Capacidad'] . ' kW</p></li>';
           $capacidad += $rows['T_Capacidad'];
         }
 

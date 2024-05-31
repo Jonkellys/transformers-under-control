@@ -74,7 +74,7 @@
           if(isset($_GET['transformer'])) {
             echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="inventory">';
           } else if(isset($_GET['operation'])) {
-            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="history">';
+            echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="operations">';
           } else if(isset($_GET['account'])) {
             echo '<a class="btn btn-outline-primaty py-2 text-primary back-btn nav-icon" href="configurations">';
           } else if(isset($_GET['location'])) {
@@ -134,7 +134,7 @@
         echo '
           <form action="' . SERVERURL . 'conexiones/inventario.php?updateT" name="TUpdate" id="TUpdate" autocomplete="off" enctype="multipart/form-data" method="POST" data-form="save" class="FormularioAjax p-3">
             <div class="form-group">
-              <label for="TCodigoUpdate" class="text-dark">SerialNumber</label>
+              <label for="TCodigoUpdate" class="text-dark">Serial Number</label>
               <input id="TCodigoUpdate" readonly="" value="' . $data->T_Codigo . '" onkeypress="return letras(event)" type="text" name="TCodigoUpdate" class="form-control input-default">
             </div>
 

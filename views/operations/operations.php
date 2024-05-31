@@ -3,7 +3,7 @@
 
   session_start(['name' => 'Sistema']);
 
-  $page = "historial";
+  $page = "operations";
 
   if(!isset($_SESSION['token']) || !isset($_SESSION['usuario'])) {
     unset($_SESSION['id']);
@@ -32,7 +32,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <?php include "./modulos/links.php"; ?>
-  <title>History | <?php echo NOMBRE; ?></title>
+  <title>Operations | <?php echo NOMBRE; ?></title>
 </head>
 
 <body style="width: 100vw;">
@@ -42,7 +42,7 @@
   ?>
 
   <div class="container-fluid mt-0 flex-grow-1 container-p-y ml-5 w-50">
-    <h4 class="fw-bold mb-0 w-50">History</h4>
+    <h4 class="fw-bold mb-0 w-50">Operations</h4>
   </div>
 
   <style media="screen">
@@ -168,7 +168,7 @@
                 <th>#</th>
                 <th>Process</th>
                 <th>Date</th>
-                <th>Transformer's Serial Number</th>
+                <th>Transformer <br> Serial Number</th>
                 <th>Status</th>
                 <th>Municipality</th>
                 <th>Parish</th>
@@ -192,7 +192,7 @@
                         <th> <strong>" . $num++ . "</strong></th>
                         <td>" . $rows['O_Procedimiento'] . "</td>
                         <td>" . $rows['O_Fecha'] . "</td>
-                        <td><a class='text-info' href='transformador?serial=" . $rows['O_Equipo'] . "'>" . $rows['O_Equipo'] . "</a></td>
+                        <td><a class='text-info' href='transformer?serial=" . $rows['O_Equipo'] . "'>" . $rows['O_Equipo'] . "</a></td>
                         <td>" . $rows['O_EstadoActual'] . "</td>
                         <td>" . $rows['O_Municipio'] . "</td>
                         <td>" . $rows['O_Parroquia'] . "</td>
@@ -202,7 +202,7 @@
 
                         if($_SESSION['tipo'] == "Admin") {
                         echo "<td class='mt-0 d-flex flex-row justify-content-around'>
-                          <a class='btn btn-sm btn-info' href='editar?operation=" . $rows['O_Codigo'] . "'>
+                          <a class='btn btn-sm btn-info' href='update?operation=" . $rows['O_Codigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>
                           </a>
 

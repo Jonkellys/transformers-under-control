@@ -4,7 +4,7 @@
 
    session_start(['name' => 'Sistema']);
    
-   $page = "configuraciones";
+   $page = "configurations";
 
   if(!isset($_SESSION['token']) || !isset($_SESSION['usuario'])) {
     unset($_SESSION['id']);
@@ -115,7 +115,7 @@
           <?php
             if($_SESSION['tipo'] == "Normal") {
               echo '
-                <a class="text-primary" href="editar?account=' . $_SESSION['codigo'] . '">Update Information</a>
+                <a class="text-primary" href="update?account=' . $_SESSION['codigo'] . '">Update Information</a>
               ';
             }
           ?>
@@ -236,7 +236,7 @@
                         <td>" . $rows['userUsername'] . "</td>
                         <td>" . $rows['userType'] . "</td>
                         <td class='mt-0'>
-                          <a class='btn btn-sm btn-info' href='editar?account=" . $rows['userCodigo'] . "'>
+                          <a class='btn btn-sm btn-info' href='update?account=" . $rows['userCodigo'] . "'>
                             <span class='tf-icons bx bx-edit text-white'></span>
                           </a>
 

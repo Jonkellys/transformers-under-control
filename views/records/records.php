@@ -3,7 +3,7 @@
 
   session_start(['name' => 'Sistema']);
 
-  $page = "reportes";
+  $page = "records";
 
   if(!isset($_SESSION['token']) || !isset($_SESSION['usuario'])) {
     unset($_SESSION['id']);
@@ -137,7 +137,7 @@
     <div id="accordion-one" class="accordion ml-5 card mx-auto p-4 col-9">
       <h4 class="card-title">Choose an option</h4>
       <div class="d-flex btn-box">
-        <a class="mb-0 btn btn-primary mx-1 btn-one" href="newReporte?informe=General&tipoData=Todos" target="_blank" rel="noopener noreferrer"><i class="bx bxs-file-pdf text-white"></i> General Record</a>
+        <a class="mb-0 btn btn-primary mx-1 btn-one" href="newRecord?informe=General&tipoData=Todos" target="_blank" rel="noopener noreferrer"><i class="bx bxs-file-pdf text-white"></i> General Record</a>
 
         <button class="mb-0 btn btn-primary mx-1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="bx bx-file text-white"></i> Personalized Record</button>
       </div>

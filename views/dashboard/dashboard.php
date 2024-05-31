@@ -148,7 +148,7 @@
 
             <h5 class="card-title fw-semibold mt-1 mb-4">Operations History</h5>
             <?php
-              $result = connect()->query("SELECT * FROM operaciones LIMIT 8");
+              $result = connect()->query("SELECT * FROM operaciones ORDER BY O_Fecha DESC LIMIT 8");
 
               while ($rows = $result->fetch()) {
                 if($rows['O_Procedimiento'] == "Removal") {
@@ -164,7 +164,7 @@
                 echo '<div class="d-flex flex-row justify-content-center font-tiny mt-0">
                         <p class="text-muted">' . $rows['O_Fecha'] . '</p>
                         <i class="bx bx-circle ' . $color . ' mx-2 mt-1 font-weight-bold"></i>
-                        <p class="text-dark">' . $rows['O_Procedimiento'] . ' - <a href="transformador?serial=' . $rows['O_Equipo'] . '">' . $rows['O_Equipo'] . '</a></p>
+                        <p class="text-dark">' . $rows['O_Procedimiento'] . ' - <a href="transformer?serial=' . $rows['O_Equipo'] . '">' . $rows['O_Equipo'] . '</a></p>
                       </div>
                 ';
               };

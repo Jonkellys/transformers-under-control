@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $consulta = ejecutar_consulta_simple("SELECT T_Codigo FROM transformadores WHERE T_Codigo = '$equipo'");
 
       if($consulta->rowCount() <= 0) {
-        echo "<script>new swal('¡Error!', 'The entered serial number is already in the system', 'error');</script>";
+        echo "<script>new swal('¡Error!', 'The entered serial number is not saved in the system', 'error');</script>";
         exit();
       } else {
 
@@ -73,24 +73,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $localidad = strClean($_POST["HLocalidadAdd"]);
             $direccion = strClean($_POST["HDireccionAdd"]);
           
-            if($dir == "" && $municipio == "") {
-              echo "<script>new swal('¡Error!', 'You must choose a Municipality', 'error');</script>";
-              exit();
-            }
+            if($dir == "" && $municipio == "Service Central") {
+              $direccion = "Calle La Planta";
+              $parroquia = "Santa Catalina";
+              $localidad = "Sector El Valle";
+            } else if ($dir == "" && $municipio != "Service Central") {
 
-            if($municipio != "" && $parroquia == "") {
-              echo "<script>new swal('¡Error!', 'You must choose a Parish', 'error');</script>";
-              exit();
-            }
+              if($dir == "" && $municipio == "") {
+                echo "<script>new swal('¡Error!', 'You must choose a Municipality', 'error');</script>";
+                exit();
+              }
 
-            if($parroquia != "" && $localidad == "") {
-              echo "<script>new swal('¡Error!', 'You must choose a Location', 'error');</script>";
-              exit();
-            }
+              if($municipio != "" && $parroquia == "") {
+                echo "<script>new swal('¡Error!', 'You must choose a Parish', 'error');</script>";
+                exit();
+              }
 
-            if($localidad != "" && $direccion == "") {
-              echo "<script>new swal('¡Error!', 'You must choose an Address', 'error');</script>";
-              exit();
+              if($parroquia != "" && $localidad == "") {
+                echo "<script>new swal('¡Error!', 'You must choose a Location', 'error');</script>";
+                exit();
+              }
+
+              if($localidad != "" && $direccion == "") {
+                echo "<script>new swal('¡Error!', 'You must choose an Address', 'error');</script>";
+                exit();
+              }
             }
           } else {
             $direccion = "Calle La Planta";
@@ -116,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         if($procedimiento == "Removal" || $procedimiento == "Repair") {
-	       $thing = "UPDATE transformadores SET T_Codigo = '$codigoT', T_Estado = '$estado', T_Capacidad = '$capacidadT', T_Municipio = 'Central de Servicios', T_Direccion = 'Calle La Planta', T_Tipo = '$tipoT', T_Banco = '$bancoT', T_Parroquia = 'Santa Catalina', T_Localidad = 'Sector El Valle', T_Marca = '$marcaT', T_Modelo = '$modeloT', T_Garantia = '$garantiaT' WHERE T_Codigo = '$equipo'";
+	       $thing = "UPDATE transformadores SET T_Codigo = '$codigoT', T_Estado = '$estado', T_Capacidad = '$capacidadT', T_Municipio = 'Service Central', T_Direccion = 'Calle La Planta', T_Tipo = '$tipoT', T_Banco = '$bancoT', T_Parroquia = 'Santa Catalina', T_Localidad = 'Sector El Valle', T_Marca = '$marcaT', T_Modelo = '$modeloT', T_Garantia = '$garantiaT' WHERE T_Codigo = '$equipo'";
         } else if($procedimiento != "Removal") {
           $thing = "UPDATE transformadores SET T_Codigo = '$codigoT', T_Estado = '$estado', T_Capacidad = '$capacidadT', T_Municipio = '$municipio', T_Direccion = '$direccion', T_Tipo = '$tipoT', T_Banco = '$bancoT', T_Parroquia = '$parroquia', T_Localidad = '$localidad', T_Marca = '$marcaT', T_Modelo = '$modeloT', T_Garantia = '$garantiaT' WHERE T_Codigo = '$equipo'";
         }
@@ -129,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
        if($stmt->execute()){
          $query->execute();
-         echo "<script>new swal('¡Success!', 'Proccess Added correctly', 'success');</script>";
+         echo "<script>new swal('¡Success!', 'Operation Added correctly', 'success');</script>";
          echo '<script> location.reload(); </script>';
        } 
 
@@ -214,7 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         if($quer->execute()){
           $query1->execute();
           echo "<script>new swal('¡Success!', 'Operation updated correctly', 'success');</script>";
-          echo '<script> window.location.href = "http://localhost/transformers-under-control/historial"; </script>';
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/operations"; </script>';
         }
 
       }
@@ -226,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
       if(connect()->query($query)) {
         echo "<script>new swal('¡Success!', 'Operation deleted correctly', 'success');</script>";
-        echo '<script> window.location.href = "http://localhost/transformers-under-control/historial"; </script>';
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/operations"; </script>';
       } 
     }
   }

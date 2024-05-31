@@ -11,7 +11,7 @@
           exit();
         }
 
-        echo '<script> window.location.href = "http://localhost/transformers-under-control/ubicaciones?municipio=' . $radMun .'"; </script>';
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/locations?municipio=' . $radMun .'"; </script>';
 
       } else if(isset($_GET['UAdd'])) {
         $stmt = connect()->prepare("INSERT INTO municipios(M_Codigo, M_Nombre, M_Tipo, M_Ubicacion)
@@ -150,7 +150,7 @@
                     while ($rows = $result->fetch()) {
                       echo"<tr>
                             <th> <strong>" . $num++ . "</strong></th>
-                            <td><a class='text-info' href='transformador?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
+                            <td><a class='text-info' href='transformer?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
                             <td>" . $rows['T_Estado'] . "</td>
                             <td>" . $rows['T_Capacidad'] . " kW</td>
                             <td>" . $rows['T_Localidad'] . "</td>
@@ -221,7 +221,7 @@
                     while ($rows = $result->fetch()) {
                       echo"<tr>
                             <th> <strong>" . $num++ . "</strong></th>
-                            <td><a class='text-info' href='transformador?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
+                            <td><a class='text-info' href='transformer?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
                             <td>" . $rows['T_Estado'] . "</td>
                             <td>" . $rows['T_Capacidad'] . " kW</td>
                             <td>" . $rows['T_Direccion'] . "</td>
@@ -265,7 +265,7 @@
 
         if($sqlEdit->execute()){
           echo "<script>new swal('¡Success!', 'Location Updated Correctly', 'success');</script>";
-          echo '<script> window.location.href = "http://localhost/transformers-under-control/ubicaciones"; </script>';
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/locations"; </script>';
         }
 
       } else if(isset($_GET['UDel'])) {
@@ -275,7 +275,7 @@
 
         if(connect()->query($queryDel)) {
           echo "<script>new swal('¡Success!', 'Location Deleted Correctly', 'success');</script>";
-          echo '<script> window.location.href = "http://localhost/transformers-under-control/ubicaciones"; </script>';
+          echo '<script> window.location.href = "http://localhost/transformers-under-control/locations"; </script>';
         }
 
       }

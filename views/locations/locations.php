@@ -3,7 +3,7 @@
 
   session_start(['name' => 'Sistema']);
 
-  $page = "ubicaciones";
+  $page = "locations";
 
   if(!isset($_SESSION['token']) || !isset($_SESSION['usuario'])) {
     unset($_SESSION['id']);
@@ -194,7 +194,7 @@
 
                           if($_SESSION['tipo'] == "Admin") {
                           echo "<td class='mt-0'>
-                            <a class='btn btn-sm btn-info' href='editar?location=" . $rows1['M_Codigo'] . "'>
+                            <a class='btn btn-sm btn-info' href='update?location=" . $rows1['M_Codigo'] . "'>
                               <span class='tf-icons bx bx-edit text-white'></span>
                             </a>
 
@@ -314,7 +314,7 @@
                     while ($rows = $result->fetch()) {
                       echo"<tr>
                             <th> <strong>" . $num++ . "</strong></th>
-                            <td><a class='text-info' href='transformador?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
+                            <td><a class='text-info' href='transformer?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
                             <td>" . $rows['T_Estado'] . "</td>
                             <td>" . $rows['T_Capacidad'] . " kW</td>
                             <td>" . $rows['T_Parroquia'] . "</td>
@@ -427,7 +427,7 @@
                         while ($rows = $result->fetch()) {
                           echo"<tr>
                                 <th> <strong>" . $num++ . "</strong></th>
-                                <td><a class='text-info' href='transformador?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
+                                <td><a class='text-info' href='transformer?serial=" . $rows['T_Codigo'] . "'>" . $rows['T_Codigo'] . "</a></td>
                                 <td>" . $rows['T_Estado'] . "</td>
                                 <td>" . $rows['T_Capacidad'] . " kW</td>
                                 <td>" . $rows['T_Parroquia'] . "</td>

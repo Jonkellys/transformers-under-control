@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
       if($sql->execute()){
         echo "<script>new swal('¡Success!', 'Info Updated Correctly', 'success');</script>";
-        echo '<script> window.location.href = "http://localhost/transformers-under-control/inventario"; </script>';
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/inventory"; </script>';
       }
 
     } else if(isset($_GET['deleteT'])) {
@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
       if(connect()->query($query)) {
         echo "<script>new swal('Success', 'Transformer Deleted Correctly', 'success');</script>";
-        echo '<script> window.location.href = "http://localhost/transformers-under-control/inventario"; </script>';
+        echo '<script> window.location.href = "http://localhost/transformers-under-control/inventory"; </script>';
       }
     }
 

@@ -113,7 +113,7 @@
                 if($sql->execute()){
                     echo "<script>new swal('¡Success!', 'Account Updated correctly', 'success');</script>";
                                       
-                    echo '<script> window.location.href = "http://localhost/transformers-under-control/configuraciones"; </script>';
+                    echo '<script> window.location.href = "http://localhost/transformers-under-control/configurations"; </script>';
                 }
 
             } else if(isset($_GET['deleteC'])) {
@@ -134,7 +134,7 @@
                     if($_SESSION['codigo'] == $codigo) {
                       echo '<script> window.location.href = "http://localhost/transformers-under-control/"; </script>';
                     } else {
-                      echo '<script> window.location.href = "http://localhost/transformers-under-control/configuraciones"; </script>';
+                      echo '<script> window.location.href = "http://localhost/transformers-under-control/configurations"; </script>';
                     }
                 }
               }

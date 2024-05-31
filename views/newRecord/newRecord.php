@@ -27,7 +27,7 @@
   $tipoData = strClean($_GET['tipoData']);
 
   if(!isset($informe) || !isset($tipoData)) {
-    header('Location: http://localhost/transformers-under-control/reportes');
+    header('Location: http://localhost/transformers-under-control/records');
   }
 ?>
 
@@ -718,7 +718,7 @@
                         <th>#</th>';
 
                         if($procedimiento == "All") {
-                          echo '<th>Process/th>';
+                          echo '<th>Process</th>';
                         }
 
                         if($fecha == "All") {
