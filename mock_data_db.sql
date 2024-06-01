@@ -41,10 +41,6 @@ CREATE TABLE `contrasenas` (
 -- Volcado de datos para la tabla `contrasenas`
 --
 
-INSERT INTO `contrasenas` (`id`, `contrasenaEmail`, `contrasenaToken`, `userCodigo`, `userType`) VALUES
-(10, 'user@email.com', 'e8655ca539bd5454f00553d3d0cae3c8e434e119c9987a9d419de6d53ec463b3288e28eee5cfcdb0c79bad46dbbdaa338846', 'A4578498-1', 'Admin'),
-(11, 'user@email.com', 'fbcd9820e812c569093528c75c072c6e772964a8536c33f8aa9d1cd5c530fb2df3a79d9a3f61855a2c8cbb77152317e84215', 'A4578498-1', 'Admin');
-
 -- --------------------------------------------------------
 
 --
