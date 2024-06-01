@@ -64,16 +64,16 @@ This project was built during my internship at a electricity company, at the mom
 - XAMPP.
 
 - MySQL.
-  
-  
+
+
 
 ## [Getting Started](#start)
 
 ### Prerequisites
 
-You'll need to have install XAMPP on your computer to host the project. You can download it on: [apachefriends.org ]()
+You'll need to have install XAMPP on your computer to host the project. You can download it on: [Apache Friends](apachefriends.org)
 
-
+### 
 
 ### Installation
 
@@ -110,6 +110,8 @@ Once you successfully install the project your first step is logging in to the s
 - **Username:**  quietimpulse
 
 - **Password:**  12345678
+
+- If you need to change the password the default user email is: eianderson@live.com
 
 
 
