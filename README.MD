@@ -121,7 +121,7 @@ Once you logged in, you'll have full access to the system so feel free to explor
 
 ## [Contributing](#contributing)
 
-If you want to contribute to this project to enhanced and make it better you're very welcome to do it.
+If you want to contribute to this project to enhanced and make it better you're very welcome to do it. Make sure to read the [Contributing Guidelines](https://github.com/Jonkellys/transformers-under-control/blob/master/CONTRIBUTING.md)
 
 
 
