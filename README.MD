@@ -8,11 +8,12 @@
 <p align="center">A simple inventory system to keep track of electric current transformers in one area.</p>
 
 <div align="center">
-  <a href="#about">About</a>    |    
-  <a href="#start">Getting Started</a>    |    
-  <a href="#usage">Usage</a>    |    
-  <a href="#contributing">Contributing</a>     |   
-  <a href="#license">License</a>
+  <a href="#about">About</a> || 
+  <a href="#start">Getting Started</a> || 
+  <a href="#usage">Usage</a> || 
+  <a href="#contributing">Contributing</a> || 
+  <a href="#license">License</a> || 
+  <a href="#acknowledgments">Acknowledgments</a>
 </div>
 
 ---
@@ -21,11 +22,7 @@
 
 This project was built during my internship at a electricity company, at the moment of my arrival they keep all the information of the electric current transformers in the area on paper, so as part of my work there I built this systems to help them store their information in a faster, more organized, and secure way.
 
-
-
 > **Note:** This is a copyright-free translated version of the original project made to protect the sensitive information found in the original.
-
-
 
 ### Key Features
 
@@ -47,8 +44,6 @@ This project was built during my internship at a electricity company, at the mom
 
 - Cross-platform.
 
-
-
 ### Built with
 
 - HTML/CSS.
@@ -64,8 +59,6 @@ This project was built during my internship at a electricity company, at the mom
 - XAMPP.
 
 - MySQL.
-
-
 
 ## [Getting Started](#start)
 
@@ -101,8 +94,6 @@ You'll need to have install XAMPP on your computer to host the project. You can 
 
 5. Go to http://localhost/transformers-under-control/ on your preferred browser.
 
-
-
 ## [Usage](#usage)
 
 Once you successfully install the project your first step is logging in to the system, you can do it with the following data:
@@ -113,18 +104,18 @@ Once you successfully install the project your first step is logging in to the s
 
 - If you need to change the password the default user email is: eianderson@live.com
 
-
-
 Once you logged in, you'll have full access to the system so feel free to explore all the features for yourself (It pretty self-explanatory).
-
-
 
 ## [Contributing](#contributing)
 
 If you want to contribute to this project to enhanced and make it better you're very welcome to do it. Make sure to read the [Contributing Guidelines](https://github.com/Jonkellys/transformers-under-control/blob/master/CONTRIBUTING.md)
 
-
-
 ## [License](#license)
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## [Acknowledgments](#acknowledgments)
+
+Awesome resources used on this project:
+
+- [Boxicons](https://boxicons.com/)
